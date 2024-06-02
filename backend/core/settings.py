@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     # Custom apps
     "apps.products",
+    "apps.pizza",
 ]
 
 MIDDLEWARE = [
