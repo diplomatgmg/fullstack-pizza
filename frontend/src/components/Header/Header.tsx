@@ -7,7 +7,6 @@ import CartInfo from "./CartInfo.tsx"
 const HeaderStyle = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
 `
 
 const Header = (): ReactElement => {
