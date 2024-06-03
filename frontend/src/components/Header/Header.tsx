@@ -1,13 +1,22 @@
 import { type ReactElement } from "react"
 import styled from "styled-components"
 import Logo from "./Logo.tsx"
+import AuthButton from "./AuthButton/AuthButton.tsx"
+import CartInfo from "./CartInfo.tsx"
 
-const HeaderStyle = styled.div``
+const HeaderStyle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
 
 const Header = (): ReactElement => {
   return (
     <HeaderStyle>
       <Logo />
+      {/*<Search/>*/}
+      <CartInfo />
+      <AuthButton />
     </HeaderStyle>
   )
 }
