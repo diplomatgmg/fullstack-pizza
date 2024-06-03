@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from .models import Pizza
+from .serializers import PizzaSerializer
+
+
+class PizzaListAPIView(generics.ListAPIView):
+    queryset = Pizza.objects.all().prefetch_related("ingredients")
+    serializer_class = PizzaSerializer
