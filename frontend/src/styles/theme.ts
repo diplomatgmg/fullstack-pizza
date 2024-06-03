@@ -6,6 +6,7 @@ export const fontWeights = {
 
 export const colors = {
   black: "#000",
-  grey: "#6b6b6b",
   white: "#fff",
+  grey: "#6b6b6b",
+  orange: "#ff7300",
 }
