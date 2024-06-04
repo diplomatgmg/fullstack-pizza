@@ -1,15 +1,30 @@
 import GlobalStyle from "./styles/global.ts"
 import Header from "./components/Header/Header.tsx"
-import Wrapper from "./components/Wrapper/Wrapper.tsx"
+import Container from "./components/Container/Container.tsx"
+import styled from "styled-components"
+import { colors } from "./styles/theme.ts"
+import FilterPanel from "./components/FilterPanel/FilterPanel.tsx"
+
+const AppStyle = styled.div`
+  margin: 2rem;
+  background-color: ${colors.white};
+  border-radius: 2rem;
+  height: calc(100vh - 4rem);
+`
 
 function App() {
   return (
-    <>
-      <Wrapper>
+    <AppStyle>
+      <Container>
         <Header />
-      </Wrapper>
+      </Container>
+
+      <Container>
+        <FilterPanel />
+      </Container>
+
       <GlobalStyle />
-    </>
+    </AppStyle>
   )
 }
 

@@ -16,7 +16,7 @@ const AuthButton = (): ReactElement => {
   return (
     <AuthButtonStyle>
       <EmailStyle>email@email.com</EmailStyle>
-      <Button text={"Выйти"} />
+      <Button>Выйти</Button>
     </AuthButtonStyle>
   )
 }

@@ -1,16 +1,33 @@
 import { FC, type ReactElement } from "react"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 import { colors, fontWeights } from "../../styles/theme.ts"
 
-const ButtonStyled = styled.button`
+interface ButtonProps {
+  children: string | ReactElement
+  bgColor?: string
+  color?: string
+  hoverBgColor?: string
+  hoverColor?: string
+}
+
+interface ButtonStyledProps {
+  theme: {
+    bgColor: string
+    color: string
+    hoverBgColor: string
+    hoverColor: string
+  }
+}
+
+const ButtonStyled = styled.button<ButtonStyledProps>`
   display: flex;
   align-items: center;
   height: 40px;
-  background-color: ${colors.orange};
-  color: ${colors.white};
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.color};
   font-weight: ${fontWeights.black};
   font-size: 0.9rem;
-  padding: 0.75rem 1.25rem;
+  padding: 1rem 1.5rem;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -21,22 +38,24 @@ const ButtonStyled = styled.button`
 
   &:hover {
     transform: translateY(-3px);
-    background-color: #f66e00;
+    background-color: ${(props) => props.theme.hoverBgColor};
+    color: ${(props) => props.theme.hoverColor};
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   }
 `
 
-interface ButtonProps {
-  text?: string
-  children?: ReactElement
-}
-
-const Button: FC<ButtonProps> = ({ text, children }): ReactElement => {
-  if (text) {
-    return <ButtonStyled>{text}</ButtonStyled>
-  }
-
-  return <ButtonStyled>{children}</ButtonStyled>
+const Button: FC<ButtonProps> = ({
+  children,
+  bgColor = colors.orange,
+  color = colors.white,
+  hoverBgColor = "#f66e00",
+  hoverColor = colors.white,
+}): ReactElement => {
+  return (
+    <ThemeProvider theme={{ bgColor, color, hoverBgColor, hoverColor }}>
+      <ButtonStyled>{children}</ButtonStyled>
+    </ThemeProvider>
+  )
 }
 
 export default Button
