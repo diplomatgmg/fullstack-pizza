@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components"
-import NunitoBlackTtf from "../assets/fonts/Nunito-Black.ttf"
-import NunitoBoldTtf from "../assets/fonts/Nunito-Bold.ttf"
-import NunitoRegularTtf from "../assets/fonts/Nunito-Regular.ttf"
+import NunitoBlackTtf from "/fonts/Nunito-Black.ttf"
+import NunitoBoldTtf from "/fonts/Nunito-Bold.ttf"
+import NunitoRegularTtf from "/fonts/Nunito-Regular.ttf"
 
 export default createGlobalStyle`
     @font-face {
@@ -27,11 +27,11 @@ export default createGlobalStyle`
     
     * {
         line-height: 1;
+        font-family: Nunito, sans-serif;
     }
     
     body {
         background-color: #ffe093;
         margin: 0;
-        font-family: Nunito, sans-serif;
     }
 `
