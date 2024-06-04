@@ -33,7 +33,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.1s linear;
   position: relative;
   user-select: none;
   letter-spacing: 0.05rem;
