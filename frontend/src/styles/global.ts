@@ -25,6 +25,10 @@ export default createGlobalStyle`
         font-style: normal;
     }
     
+    * {
+        line-height: 1;
+    }
+    
     body {
         background-color: #ffe093;
         margin: 0;
