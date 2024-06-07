@@ -1,7 +1,7 @@
 import { type ReactElement } from "react"
 import styled from "styled-components"
 import PizzaLogo from "/pizza.svg"
-import { fontWeights, colors } from "../../styles/theme.ts"
+import { fontWeights, colors } from "../../../styles/theme.ts"
 
 const LogoStyle = styled.div`
   display: flex;

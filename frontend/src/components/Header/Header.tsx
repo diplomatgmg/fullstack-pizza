@@ -1,8 +1,8 @@
 import { type ReactElement } from "react"
 import styled from "styled-components"
-import Logo from "./Logo.tsx"
 import AuthButton from "./AuthButton/AuthButton.tsx"
-import CartInfo from "./CartInfo.tsx"
+import Logo from "./Logo/Logo.tsx"
+import CartInfo from "./CartInfo/CartInfo.tsx"
 
 const HeaderStyle = styled.div`
   display: flex;

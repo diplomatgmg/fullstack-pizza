@@ -1,9 +1,9 @@
 import { type ReactElement } from "react"
-import Button from "../Button/Button.tsx"
 import styled from "styled-components"
-import Delimiter from "../Button/Delimiter.tsx"
-import Img from "../Img/Img.tsx"
 import CartIcon from "/cart.svg"
+import Img from "../../Img/Img.tsx"
+import Button from "../../Button/Button.tsx"
+import Delimiter from "../../Button/Delimiter.tsx"
 
 const CartInfoStyle = styled.div`
   margin-left: auto;
