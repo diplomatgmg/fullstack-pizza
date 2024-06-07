@@ -8,6 +8,7 @@ interface ButtonProps {
   color?: string
   hoverBgColor?: string
   hoverColor?: string
+  borderColor?: string
   fontWeight?: number
 }
 
@@ -28,9 +29,9 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.color};
   font-weight: ${(props) => props.theme.fontWeight};
+  border: ${(props) => `1px solid ${props.theme.borderColor}`};
   font-size: 0.9rem;
   padding: 1rem 1.5rem;
-  border: none;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.1s linear;
@@ -52,6 +53,7 @@ const Button: FC<ButtonProps> = ({
   color = colors.white,
   hoverBgColor = "#f66e00",
   hoverColor = colors.white,
+  borderColor = "transparent",
   fontWeight = fontWeights.bold,
 }): ReactElement => {
   return (
@@ -61,7 +63,8 @@ const Button: FC<ButtonProps> = ({
         color,
         hoverBgColor,
         hoverColor,
-        fontWeight: fontWeight,
+        borderColor,
+        fontWeight,
       }}>
       <ButtonStyled>{children}</ButtonStyled>
     </ThemeProvider>
