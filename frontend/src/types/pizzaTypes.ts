@@ -1,14 +1,14 @@
-interface TIngredient {
+export interface TIngredient {
   id: number
   name: string
 }
 
-interface TCategory {
+export interface TCategory {
   id: number
   name: string
 }
 
-interface TPizza {
+export interface TPizza {
   id: number
   name: string
   price: string
@@ -16,5 +16,3 @@ interface TPizza {
   categories: TCategory[]
   image: string
 }
-
-export type { TIngredient, TCategory, TPizza }
