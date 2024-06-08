@@ -1,13 +1,18 @@
 import { type ReactElement } from "react"
+import styled from "styled-components"
+
+const SortStyle = styled.div`
+  white-space: nowrap;
+`
 
 const Sort = (): ReactElement => {
   return (
-    <div>
+    <SortStyle>
       Сортировка по:{" "}
       <a href="#">
         <b>цене</b>
       </a>
-    </div>
+    </SortStyle>
   )
 }
 

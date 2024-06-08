@@ -24,8 +24,9 @@ const Title = styled.h1`
   font-weight: ${fontWeights.bold};
   text-transform: uppercase;
   font-size: 2rem;
-  margin: 0;
   line-height: 1;
+  white-space: nowrap;
+  margin: 0 2rem 0 0;
 `
 
 const Description = styled.p`

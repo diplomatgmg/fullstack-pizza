@@ -2,11 +2,11 @@ import { type ReactElement } from "react"
 import styled from "styled-components"
 import CategoryItem from "./CategoryItem.tsx"
 
-const CATEGORIES = ["Мясные", "Вегетарианские", "Гриль", "Острые", "Грибные"]
+const CATEGORIES = ["Мясные", "Вегетарианские", "Гриль", "Острые"]
 
 const CategoryStyle = styled.ul`
-  margin: 0;
   padding: 0;
+  margin: 0 2rem 0 0;
   display: flex;
   gap: 1.5rem;
 `

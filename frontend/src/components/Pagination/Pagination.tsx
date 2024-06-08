@@ -9,8 +9,8 @@ const PaginationStyle = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-left: 1.5rem;
-  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0;
 `
 
 const Pagination = (): ReactElement => {

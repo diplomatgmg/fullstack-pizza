@@ -7,7 +7,7 @@ interface ContainerProps {
 }
 
 const ContainerStyle = styled.div`
-  padding: 2rem 4rem 0 4rem;
+  padding: 1.5rem 4rem 0 4rem;
 `
 
 const BorderStyle = styled.div`

@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { colors } from "./styles/theme.ts"
 import FilterPanel from "./components/FilterPanel/FilterPanel.tsx"
 import PizzaList from "./components/Pizza/PizzaList.tsx"
+import Pagination from "./components/Pagination/Pagination.tsx"
 
 const AppStyle = styled.div`
   margin: 2rem;
@@ -27,6 +28,8 @@ function App() {
       <Container>
         <PizzaList />
       </Container>
+
+      <Pagination />
 
       <GlobalStyle />
     </AppStyle>

@@ -43,12 +43,17 @@ const Footer = styled.div`
 
   width: 100%;
   margin-top: auto;
+  gap: 1rem;
 `
 
 const Price = styled.p`
   font-size: 1.25rem;
   font-weight: bold;
 
+  white-space: nowrap;
+`
+
+const Cart = styled.div`
   white-space: nowrap;
 `
 
@@ -62,12 +67,14 @@ const PizzaItem: FC<PizzaItemProps> = ({ pizza }): ReactElement => {
       </Ingredients>
       <Footer>
         <Price>от {pizza.price} ₽</Price>
-        <Button
-          bgColor={colors.white}
-          borderColor={colors.orange}
-          color={colors.orange}>
-          В корзину
-        </Button>
+        <Cart>
+          <Button
+            bgColor={colors.white}
+            borderColor={colors.orange}
+            color={colors.orange}>
+            В корзину
+          </Button>
+        </Cart>
       </Footer>
     </PizzaItemStyle>
   )
