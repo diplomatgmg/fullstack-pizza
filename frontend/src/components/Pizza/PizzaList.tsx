@@ -4,11 +4,12 @@ import PizzaItem from "./PizzaItem.tsx"
 import styled from "styled-components"
 
 const PizzaListStyle = styled.ul`
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 0;
 
   justify-items: center;
-  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 `
 
