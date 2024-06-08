@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     "corsheaders",
     "debug_toolbar",
     # Custom apps
-    "apps.products",
     "apps.pizza",
 ]
 
