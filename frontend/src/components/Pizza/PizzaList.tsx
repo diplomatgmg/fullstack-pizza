@@ -2,6 +2,7 @@ import { type ReactElement } from "react"
 import { useGetPizzaQuery } from "../../store/api/pizzaApi.ts"
 import PizzaItem from "./PizzaItem.tsx"
 import styled from "styled-components"
+import { useSearchParams } from "../../store/hooks.ts"
 
 const PizzaListStyle = styled.ul`
   display: flex;
@@ -14,17 +15,12 @@ const PizzaListStyle = styled.ul`
 `
 
 const PizzaList = (): ReactElement => {
-  const { data: pizzas, isError } = useGetPizzaQuery()
-
-  if (isError) {
-    return <h1>error</h1>
-  }
+  const searchParams = useSearchParams()
+  const { data } = useGetPizzaQuery(searchParams)
 
   return (
     <PizzaListStyle>
-      {pizzas
-        ?.slice(0, 4)
-        .map((pizza) => <PizzaItem key={pizza.id} pizza={pizza} />)}
+      {data?.results.map((pizza) => <PizzaItem key={pizza.id} pizza={pizza} />)}
     </PizzaListStyle>
   )
 }

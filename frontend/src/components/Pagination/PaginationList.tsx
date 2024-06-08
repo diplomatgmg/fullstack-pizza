@@ -1,10 +1,9 @@
 import { type ReactElement } from "react"
-import Button from "../Button/Button.tsx"
 import styled from "styled-components"
 import PaginationItem from "./PaginationItem.tsx"
-import { colors, fontWeights } from "../../styles/theme.ts"
-
-const PAGINATION_ITEMS = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+import { setPage } from "../../store/slice/searchParamsSlice.ts"
+import { useAppDispatch, useSearchParams } from "../../store/hooks.ts"
+import { useGetPizzaQuery } from "../../store/api/pizzaApi.ts"
 
 const PaginationListStyle = styled.ul`
   display: flex;
@@ -16,17 +15,24 @@ const PaginationListStyle = styled.ul`
 `
 
 const PaginationList = (): ReactElement => {
+  const searchParams = useSearchParams()
+  const { data } = useGetPizzaQuery(searchParams)
+
+  const dispatch = useAppDispatch()
+
+  const handleChangePage = (page: number): void => {
+    dispatch(setPage(page))
+  }
+
   return (
     <PaginationListStyle>
-      <Button
-        bgColor={colors.darkGrey}
-        color={colors.white}
-        hoverBgColor={colors.darkGrey}
-        fontWeight={fontWeights.bold}>
-        1
-      </Button>
-      {PAGINATION_ITEMS.map((page, index) => (
-        <PaginationItem key={index} page={page} isActive={false} />
+      {[...Array(data?.totalPages)].map((_, index) => (
+        <PaginationItem
+          key={index}
+          page={index + 1}
+          currentPage={searchParams.page}
+          onClick={handleChangePage}
+        />
       ))}
     </PaginationListStyle>
   )
