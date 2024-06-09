@@ -11,12 +11,6 @@ const AppStyle = styled.div`
   margin: 2rem;
   background-color: ${colors.white};
   border-radius: 2rem;
-  height: calc(100vh - 4rem);
-
-  @media (max-width: 1800px) {
-    width: fit-content;
-    height: 100%;
-  }
 `
 
 function App() {
