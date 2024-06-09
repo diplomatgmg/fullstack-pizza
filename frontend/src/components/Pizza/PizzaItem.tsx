@@ -1,5 +1,5 @@
 import { type FC, type ReactElement } from "react"
-import { TPizza } from "../../types/pizzaTypes.ts"
+import { TPizza } from "../../types/api/pizzaTypes.ts"
 import Button from "../Button/Button.tsx"
 import styled from "styled-components"
 import { colors } from "../../styles/theme.ts"

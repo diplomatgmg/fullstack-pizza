@@ -1,7 +1,7 @@
 import { type ReactElement } from "react"
 import { useGetPizzaQuery } from "../../store/api/pizzaApi.ts"
-import { useSearchParams } from "../../store/hooks.ts"
 import PizzaList from "./PizzaList.tsx"
+import useSearchParams from "../../store/hooks/useSearchParams.tsx"
 
 const Pizza = (): ReactElement => {
   const searchParams = useSearchParams()

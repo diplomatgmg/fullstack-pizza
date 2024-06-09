@@ -2,9 +2,10 @@ import { FC, type ReactElement } from "react"
 import styled from "styled-components"
 import PaginationItem from "./PaginationItem.tsx"
 import { setPage } from "../../store/slice/searchParamsSlice.ts"
-import { useAppDispatch, useSearchParams } from "../../store/hooks.ts"
-import { TPizzaQueryResult } from "../../types/responseTypes.ts"
+import { TPizzaQueryResult } from "../../types/api/responseTypes.ts"
 import _ from "lodash"
+import useSearchParams from "../../store/hooks/useSearchParams.tsx"
+import useAppDispatch from "../../store/hooks/useAppDispatch.tsx"
 
 interface PaginationListProps {
   totalPages: TPizzaQueryResult["totalPages"]

@@ -1,5 +1,8 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
-import { TOrderingFields, TSearchParams } from "../../types/searchParamsTypes"
+import {
+  TOrderingFields,
+  TSearchParams,
+} from "../../types/store/searchParamsTypes.ts"
 
 const initialState: TSearchParams = {
   page: 1,

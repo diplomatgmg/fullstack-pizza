@@ -2,9 +2,9 @@ import { FC, type ReactElement } from "react"
 import styled from "styled-components"
 import CategoryItem from "./CategoryItem.tsx"
 import _ from "lodash"
-import { useAppDispatch } from "../../../store/hooks.ts"
 import { setCategory, setPage } from "../../../store/slice/searchParamsSlice.ts"
-import { TCategory } from "../../../types/pizzaTypes.ts"
+import { TCategory } from "../../../types/api/pizzaTypes.ts"
+import useAppDispatch from "../../../store/hooks/useAppDispatch.tsx"
 
 interface CategoryListProps {
   categories: TCategory[]

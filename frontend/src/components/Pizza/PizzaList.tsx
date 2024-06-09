@@ -1,7 +1,7 @@
 import { FC, type ReactElement } from "react"
 import PizzaItem from "./PizzaItem.tsx"
 import styled from "styled-components"
-import { TPizza } from "../../types/pizzaTypes.ts"
+import { TPizza } from "../../types/api/pizzaTypes.ts"
 
 interface PizzaListProps {
   pizzas: TPizza[]
