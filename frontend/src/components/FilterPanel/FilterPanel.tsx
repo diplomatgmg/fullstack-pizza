@@ -1,7 +1,7 @@
 import { type ReactElement } from "react"
-import CategoryList from "./CategoryList/CategoryList.tsx"
 import Sort from "./Sort/Sort.tsx"
 import styled from "styled-components"
+import Category from "./CategoryList/Category.tsx"
 
 const FilterPanelStyle = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const FilterPanelStyle = styled.div`
 const FilterPanel = (): ReactElement => {
   return (
     <FilterPanelStyle>
-      <CategoryList />
+      <Category />
       <Sort />
     </FilterPanelStyle>
   )

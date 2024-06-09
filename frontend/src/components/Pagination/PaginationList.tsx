@@ -1,9 +1,14 @@
-import { type ReactElement } from "react"
+import { FC, type ReactElement } from "react"
 import styled from "styled-components"
 import PaginationItem from "./PaginationItem.tsx"
 import { setPage } from "../../store/slice/searchParamsSlice.ts"
 import { useAppDispatch, useSearchParams } from "../../store/hooks.ts"
-import { useGetPizzaQuery } from "../../store/api/pizzaApi.ts"
+import { TPizzaQueryResult } from "../../types/responseTypes.ts"
+import _ from "lodash"
+
+interface PaginationListProps {
+  totalPages: TPizzaQueryResult["totalPages"]
+}
 
 const PaginationListStyle = styled.ul`
   display: flex;
@@ -14,10 +19,10 @@ const PaginationListStyle = styled.ul`
   margin-bottom: 0;
 `
 
-const PaginationList = (): ReactElement => {
-  const searchParams = useSearchParams()
-  const { data } = useGetPizzaQuery(searchParams)
-
+const PaginationList: FC<PaginationListProps> = ({
+  totalPages,
+}): ReactElement => {
+  const { page } = useSearchParams()
   const dispatch = useAppDispatch()
 
   const handleChangePage = (page: number): void => {
@@ -26,11 +31,11 @@ const PaginationList = (): ReactElement => {
 
   return (
     <PaginationListStyle>
-      {[...Array(data?.totalPages)].map((_, index) => (
+      {_.range(totalPages).map((_, index) => (
         <PaginationItem
           key={index}
           page={index + 1}
-          currentPage={searchParams.page}
+          currentPage={page}
           onClick={handleChangePage}
         />
       ))}

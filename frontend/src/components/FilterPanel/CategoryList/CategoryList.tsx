@@ -1,10 +1,14 @@
-import { type ReactElement } from "react"
+import { FC, type ReactElement } from "react"
 import styled from "styled-components"
 import CategoryItem from "./CategoryItem.tsx"
-import { useGetCategoriesQuery } from "../../../store/api/pizzaApi.ts"
 import _ from "lodash"
 import { useAppDispatch } from "../../../store/hooks.ts"
 import { setCategory, setPage } from "../../../store/slice/searchParamsSlice.ts"
+import { TCategory } from "../../../types/pizzaTypes.ts"
+
+interface CategoryListProps {
+  categories: TCategory[]
+}
 
 const CategoryStyle = styled.ul`
   padding: 0.5rem 0;
@@ -15,8 +19,7 @@ const CategoryStyle = styled.ul`
   overflow: auto;
 `
 
-const CategoryList = (): ReactElement => {
-  const { data } = useGetCategoriesQuery()
+const CategoryList: FC<CategoryListProps> = ({ categories }): ReactElement => {
   const dispatch = useAppDispatch()
 
   const handleChangeCategory = (category: string): void => {
@@ -26,15 +29,13 @@ const CategoryList = (): ReactElement => {
 
   return (
     <CategoryStyle>
-      {data?.map(({ id, name }) => {
-        return (
-          <CategoryItem
-            key={id}
-            name={_.capitalize(name)}
-            onClick={handleChangeCategory}
-          />
-        )
-      })}
+      {categories.map(({ id, name }) => (
+        <CategoryItem
+          key={id}
+          name={_.capitalize(name)}
+          onClick={handleChangeCategory}
+        />
+      ))}
     </CategoryStyle>
   )
 }

@@ -1,8 +1,11 @@
-import { type ReactElement } from "react"
-import { useGetPizzaQuery } from "../../store/api/pizzaApi.ts"
+import { FC, type ReactElement } from "react"
 import PizzaItem from "./PizzaItem.tsx"
 import styled from "styled-components"
-import { useSearchParams } from "../../store/hooks.ts"
+import { TPizza } from "../../types/pizzaTypes.ts"
+
+interface PizzaListProps {
+  pizzas: TPizza[]
+}
 
 const PizzaListStyle = styled.ul`
   display: flex;
@@ -14,13 +17,12 @@ const PizzaListStyle = styled.ul`
   gap: 30px;
 `
 
-const PizzaList = (): ReactElement => {
-  const searchParams = useSearchParams()
-  const { data } = useGetPizzaQuery(searchParams)
-
+const PizzaList: FC<PizzaListProps> = ({ pizzas }): ReactElement => {
   return (
     <PizzaListStyle>
-      {data?.results.map((pizza) => <PizzaItem key={pizza.id} pizza={pizza} />)}
+      {pizzas.map((pizza) => (
+        <PizzaItem key={pizza.id} pizza={pizza} />
+      ))}
     </PizzaListStyle>
   )
 }
