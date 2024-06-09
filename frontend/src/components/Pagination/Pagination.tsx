@@ -11,7 +11,14 @@ const Pagination = (): ReactElement => {
     return <h1>Loading...</h1>
   }
 
-  return <PaginationList totalPages={data?.totalPages || 0} />
+  const totalPages = data?.totalPages || 0
+
+  return (
+    <PaginationList
+      totalPages={totalPages}
+      shouldShowPagination={totalPages > 1}
+    />
+  )
 }
 
 export default Pagination

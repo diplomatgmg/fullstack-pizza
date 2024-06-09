@@ -8,6 +8,7 @@ import _ from "lodash"
 
 interface PaginationListProps {
   totalPages: TPizzaQueryResult["totalPages"]
+  shouldShowPagination: boolean
 }
 
 const PaginationListStyle = styled.ul`
@@ -21,13 +22,16 @@ const PaginationListStyle = styled.ul`
 
 const PaginationList: FC<PaginationListProps> = ({
   totalPages,
-}): ReactElement => {
+  shouldShowPagination,
+}): ReactElement | null => {
   const { page } = useSearchParams()
   const dispatch = useAppDispatch()
 
   const handleChangePage = (page: number): void => {
     dispatch(setPage(page))
   }
+
+  if (!shouldShowPagination) return null
 
   return (
     <PaginationListStyle>
