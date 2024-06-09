@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { TSearchParams } from "../../types/searchParamsTypes.ts"
 import { TPizzaQueryResult, TPizzaResponse } from "../../types/responseTypes.ts"
+import { TCategory } from "../../types/pizzaTypes.ts"
 
 export const pizzaApi = createApi({
   reducerPath: "pizzaApi",
@@ -20,8 +21,11 @@ export const pizzaApi = createApi({
         }
       },
     }),
+    getCategories: build.query<TCategory[], void>({
+      query: () => "categories/",
+    }),
   }),
 })
 
-export const { useGetPizzaQuery } = pizzaApi
+export const { useGetPizzaQuery, useGetCategoriesQuery } = pizzaApi
 export default pizzaApi
