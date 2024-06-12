@@ -20,7 +20,7 @@ const CategoryItem: FC<CategoryItemProps> = ({
   onClick,
 }): ReactElement => {
   const { category } = useSearchParams()
-  const isActive = category === name
+  const isActive = category.toLowerCase() === name.toLowerCase()
 
   return (
     <CategoryItemStyle onClick={() => onClick(name)}>
