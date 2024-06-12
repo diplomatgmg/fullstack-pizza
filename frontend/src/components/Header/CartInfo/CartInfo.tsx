@@ -1,6 +1,6 @@
 import { type ReactElement } from "react"
 import styled from "styled-components"
-import CartIcon from "/cart.svg"
+import CartIcon from "/svg/cart.svg"
 import Img from "../../Img/Img.tsx"
 import Button from "../../Button/Button.tsx"
 import Delimiter from "../../Button/Delimiter.tsx"
