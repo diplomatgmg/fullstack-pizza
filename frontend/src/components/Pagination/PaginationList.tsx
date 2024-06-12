@@ -17,8 +17,7 @@ const PaginationListStyle = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding-bottom: 1rem;
-  margin-bottom: 0;
+  margin: 0;
 `
 
 const PaginationList: FC<PaginationListProps> = ({

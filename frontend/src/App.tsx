@@ -28,7 +28,9 @@ function App() {
         <Pizza />
       </Container>
 
-      <Pagination />
+      <Container withBorder={false}>
+        <Pagination />
+      </Container>
 
       <GlobalStyle />
     </AppStyle>

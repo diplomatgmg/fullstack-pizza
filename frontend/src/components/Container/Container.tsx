@@ -4,21 +4,29 @@ import { colors } from "../../styles/theme.ts"
 
 interface ContainerProps {
   children: ReactElement
+  withBorder?: boolean
 }
 
 const ContainerStyle = styled.div`
-  padding: 1.5rem 4rem 0 4rem;
+  padding: 1.25rem 4rem 0 4rem;
+
+  &:last-child {
+    padding-bottom: 1.25rem;
+  }
 `
 
 const BorderStyle = styled.div`
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid ${colors.lightGray};
 `
 
-const Container: FC<ContainerProps> = ({ children }): ReactElement => {
+const Container: FC<ContainerProps> = ({
+  children,
+  withBorder = true,
+}): ReactElement => {
   return (
     <ContainerStyle>
-      <BorderStyle>{children}</BorderStyle>
+      {withBorder ? <BorderStyle>{children}</BorderStyle> : children}
     </ContainerStyle>
   )
 }

@@ -40,7 +40,7 @@ const Description = styled.p`
 const Logo = (): ReactElement => {
   return (
     <LogoStyle>
-      <LogoLink href="#">
+      <LogoLink href="/">
         <LogoImage src={PizzaLogo} />
         <div>
           <Title>React Pizza</Title>
