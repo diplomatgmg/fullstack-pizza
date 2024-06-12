@@ -5,13 +5,13 @@ import AscendingAZIcon from "/svg/ascending-a-z.svg"
 import DescendingZAIcon from "/svg/descending-z-a.svg"
 import { TOrderingFields } from "./types/store/searchParamsTypes.ts"
 
-export interface TSortFilterOption {
+export interface TSortOption {
   label: string
   icon: string
   ordering: TOrderingFields
 }
 
-export const SORT_FILTER_OPTIONS: TSortFilterOption[] = [
+export const SORT_OPTIONS: TSortOption[] = [
   { label: "умолчанию", icon: DefaultSortIcon, ordering: "" },
   { label: "цене", icon: AscendingBarsIcon, ordering: "price" },
   { label: "цене", icon: DescendingBarsIcon, ordering: "-price" },

@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { TSearchParams } from "../../types/store/searchParamsTypes.ts"
+import {
+  TNormalizedSearchParams,
+  TSearchParams,
+} from "../../types/store/searchParamsTypes.ts"
 import {
   TPizzaQueryResult,
   TPizzaResponse,
@@ -13,10 +16,18 @@ export const pizzaApi = createApi({
   }),
   endpoints: (build) => ({
     getPizza: build.query<TPizzaQueryResult, TSearchParams>({
-      query: (params) => ({
-        url: "pizza/",
-        params,
-      }),
+      query: (params) => {
+        const { selectedFilter, ...rest } = params
+        const normalizedParams: TNormalizedSearchParams = {
+          ...rest,
+          ordering: selectedFilter.ordering,
+        }
+
+        return {
+          url: "pizza/",
+          params: normalizedParams,
+        }
+      },
       transformResponse: (response: TPizzaResponse): TPizzaQueryResult => {
         return {
           results: response.results,

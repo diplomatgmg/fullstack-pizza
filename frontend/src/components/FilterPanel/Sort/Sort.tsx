@@ -1,13 +1,13 @@
-import { type ReactElement, useState } from "react"
+import { type ReactElement } from "react"
 import styled from "styled-components"
 
 import Img from "../../Img/Img.tsx"
 import { colors } from "../../../styles/theme.ts"
 import Popup from "reactjs-popup"
 import "reactjs-popup/dist/index.css"
-import { SORT_FILTER_OPTIONS, TSortFilterOption } from "../../../constants.ts"
-import useAppDispatch from "../../../store/hooks/useAppDispatch.tsx"
-import { setOrdering } from "../../../store/slice/searchParamsSlice.ts"
+import { SORT_OPTIONS } from "../../../constants.ts"
+import SortList from "./SortList.tsx"
+import useSearchParams from "../../../store/hooks/useSearchParams.tsx"
 
 const SortStyle = styled.div`
   display: flex;
@@ -31,37 +31,8 @@ const BoldStyle = styled.b`
   color: ${colors.orange};
 `
 
-const FilterList = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border: 1px solid ${colors.grey};
-  border-radius: 5px;
-  padding: 1rem;
-`
-
-const FilterItem = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  text-decoration: none;
-  color: ${colors.black};
-  cursor: pointer;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`
-
 const Sort = (): ReactElement => {
-  const [selectedFilter, setSelectedFilter] = useState(SORT_FILTER_OPTIONS[0])
-  const dispatch = useAppDispatch()
-
-  const handleSetOrdering = (filter: TSortFilterOption) => {
-    setSelectedFilter(filter)
-    dispatch(setOrdering(filter.ordering))
-  }
+  const { selectedFilter } = useSearchParams()
 
   return (
     <SortStyle>
@@ -75,16 +46,7 @@ const Sort = (): ReactElement => {
         }
         position="bottom right"
         on="click">
-        <FilterList>
-          {SORT_FILTER_OPTIONS.map((filter) => (
-            <FilterItem
-              key={filter.ordering}
-              onClick={() => handleSetOrdering(filter)}>
-              <Img src={filter.icon} />
-              {filter.label}
-            </FilterItem>
-          ))}
-        </FilterList>
+        <SortList sortOptions={SORT_OPTIONS} />
       </Popup>
     </SortStyle>
   )

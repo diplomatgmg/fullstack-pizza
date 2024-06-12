@@ -1,14 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
-import {
-  TOrderingFields,
-  TSearchParams,
-} from "../../types/store/searchParamsTypes.ts"
+import { TSearchParams } from "../../types/store/searchParamsTypes.ts"
+import { SORT_OPTIONS, TSortOption } from "../../constants.ts"
 
 const initialState: TSearchParams = {
   page: 1,
   category: "все",
-  ordering: "",
-  name: "",
+  selectedFilter: SORT_OPTIONS[0],
 }
 
 const searchParamsSlice = createSlice({
@@ -21,16 +18,12 @@ const searchParamsSlice = createSlice({
     setCategory(state, action: PayloadAction<string>) {
       state.category = action.payload
     },
-    setOrdering(state, action: PayloadAction<TOrderingFields>) {
-      state.ordering = action.payload
-    },
-    setName(state, action: PayloadAction<string>) {
-      state.name = action.payload
+    setOrdering(state, action: PayloadAction<TSortOption>) {
+      state.selectedFilter = action.payload
     },
   },
 })
 
-export const { setPage, setCategory, setOrdering, setName } =
-  searchParamsSlice.actions
+export const { setPage, setCategory, setOrdering } = searchParamsSlice.actions
 
 export default searchParamsSlice.reducer
