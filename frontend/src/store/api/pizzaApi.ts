@@ -8,11 +8,12 @@ import {
   TPizzaResponse,
 } from "../../types/api/responseTypes.ts"
 import { TCategory } from "../../types/api/pizzaTypes.ts"
+import { BASE_URL } from "../../baseUrl.ts"
 
 export const pizzaApi = createApi({
   reducerPath: "pizzaApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/api/",
+    baseUrl: BASE_URL,
   }),
   endpoints: (build) => ({
     getPizza: build.query<TPizzaQueryResult, TSearchParams>({
