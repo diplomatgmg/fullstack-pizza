@@ -2,8 +2,8 @@ import { type ReactElement } from "react"
 import styled from "styled-components"
 import PizzaLogo from "/svg/pizza.svg"
 import { fontWeights, colors } from "../../../styles/theme.ts"
-import routes from "../../routes/routes.tsx"
 import { Link } from "react-router-dom"
+import routes from "../../../routes/routes.tsx"
 
 const LogoStyle = styled.div`
   display: flex;
