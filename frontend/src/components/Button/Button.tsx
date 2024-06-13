@@ -4,28 +4,36 @@ import { colors, fontWeights } from "../../styles/theme.ts"
 
 interface ButtonProps {
   children: string | number | ReactElement | ReactElement[]
-  bgColor?: string
+  type?: "button" | "submit"
+  width?: string
   color?: string
-  hoverBgColor?: string
   hoverColor?: string
+  bgColor?: string
+  hoverBgColor?: string
   borderColor?: string
+  hoverBorderColor?: string
   fontWeight?: number
 }
 
 interface ButtonStyledProps {
   theme: {
-    bgColor: string
-    color: string
-    hoverBgColor: string
-    hoverColor: string
-    fontWeight: number
+    width: ButtonProps["width"]
+    fontWeight: ButtonProps["fontWeight"]
+    color: ButtonProps["color"]
+    hoverColor: ButtonProps["hoverColor"]
+    bgColor: ButtonProps["bgColor"]
+    hoverBgColor: ButtonProps["hoverBgColor"]
+    borderColor: ButtonProps["borderColor"]
+    hoverBorderColor: ButtonProps["hoverBorderColor"]
   }
 }
 
 const ButtonStyled = styled.button<ButtonStyledProps>`
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 40px;
+  width: ${(props) => props.theme.width};
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.color};
   font-weight: ${(props) => props.theme.fontWeight};
@@ -44,29 +52,35 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
     background-color: ${(props) => props.theme.hoverBgColor};
     color: ${(props) => props.theme.hoverColor};
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    border-color: ${(props) => props.theme.hoverBorderColor};
   }
 `
 
 const Button: FC<ButtonProps> = ({
   children,
-  bgColor = colors.orange,
-  color = colors.white,
-  hoverBgColor = "#f66e00",
-  hoverColor = colors.white,
-  borderColor = "transparent",
+  type = "button",
+  width = "auto",
   fontWeight = fontWeights.bold,
+  color = colors.white,
+  hoverColor = colors.white,
+  bgColor = colors.orange,
+  hoverBgColor = colors.orange,
+  borderColor = "transparent",
+  hoverBorderColor = "transparent",
 }): ReactElement => {
   return (
     <ThemeProvider
       theme={{
-        bgColor,
-        color,
-        hoverBgColor,
-        hoverColor,
-        borderColor,
+        width,
         fontWeight,
+        color,
+        hoverColor,
+        bgColor,
+        hoverBgColor,
+        borderColor,
+        hoverBorderColor,
       }}>
-      <ButtonStyled>{children}</ButtonStyled>
+      <ButtonStyled type={type}>{children}</ButtonStyled>
     </ThemeProvider>
   )
 }
