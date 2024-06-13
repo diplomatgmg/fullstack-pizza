@@ -23,7 +23,6 @@ const SortLink = styled.a`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  text-decoration: none;
   cursor: pointer;
 `
 

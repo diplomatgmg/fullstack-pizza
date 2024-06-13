@@ -15,7 +15,6 @@ const SortItemStyle = styled.a`
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
-  text-decoration: none;
   color: ${colors.black};
   cursor: pointer;
 

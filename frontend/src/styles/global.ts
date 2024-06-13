@@ -34,4 +34,8 @@ export default createGlobalStyle`
         background-color: #ffe093;
         margin: 0;
     }
+    
+    a {
+        text-decoration: none;
+    }
 `
