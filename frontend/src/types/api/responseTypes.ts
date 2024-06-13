@@ -1,11 +1,16 @@
 import { TPizza } from "./pizzaTypes.ts"
 
-export type TPizzaResponse = {
+export interface TPizzaResponse {
   results: TPizza[]
   total_pages: number
 }
 
-export type TPizzaQueryResult = {
+export interface TPizzaQueryResult {
   results: TPizza[]
   totalPages: number
+}
+
+export interface TLoginResponse {
+  access: string
+  refresh: string
 }
