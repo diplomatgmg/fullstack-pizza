@@ -80,7 +80,7 @@ class PizzaParser:
             pizza.categories.add(category)
 
     def start(self):
-        with open(self.parser_dir / "fixture.html", "r", encoding="utf-8") as f:
+        with open(self.parser_dir / "fixture", "r", encoding="utf-8") as f:
             content = f.read()
             soup = BeautifulSoup(content, "html.parser")
 
