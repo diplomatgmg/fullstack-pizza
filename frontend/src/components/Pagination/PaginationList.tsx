@@ -4,8 +4,8 @@ import PaginationItem from "./PaginationItem.tsx"
 import { setPage } from "../../store/slice/searchParamsSlice.ts"
 import { TPizzaQueryResult } from "../../types/api/responseTypes.ts"
 import _ from "lodash"
-import useSearchParams from "../../store/hooks/useSearchParams.tsx"
-import useAppDispatch from "../../store/hooks/useAppDispatch.tsx"
+import useSearchParams from "../../store/hooks/useSearchParams.ts"
+import useAppDispatch from "../../store/hooks/useAppDispatch.ts"
 
 interface PaginationListProps {
   totalPages: TPizzaQueryResult["totalPages"]

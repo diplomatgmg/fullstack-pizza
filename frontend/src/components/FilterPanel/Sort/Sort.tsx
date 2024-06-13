@@ -7,7 +7,7 @@ import Popup from "reactjs-popup"
 import "reactjs-popup/dist/index.css"
 import { SORT_OPTIONS } from "../../../constants.ts"
 import SortList from "./SortList.tsx"
-import useSearchParams from "../../../store/hooks/useSearchParams.tsx"
+import useSearchParams from "../../../store/hooks/useSearchParams.ts"
 
 const SortStyle = styled.div`
   display: flex;

@@ -4,7 +4,7 @@ import Img from "../../Img/Img.tsx"
 import styled from "styled-components"
 import { colors } from "../../../styles/theme.ts"
 import { setOrdering } from "../../../store/slice/searchParamsSlice.ts"
-import useAppDispatch from "../../../store/hooks/useAppDispatch.tsx"
+import useAppDispatch from "../../../store/hooks/useAppDispatch.ts"
 
 interface SortItemProps {
   option: TSortOption

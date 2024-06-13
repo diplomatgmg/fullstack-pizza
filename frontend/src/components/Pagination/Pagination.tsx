@@ -1,7 +1,7 @@
 import { type ReactElement } from "react"
 import { useGetPizzaQuery } from "../../store/api/pizzaApi.ts"
 import PaginationList from "./PaginationList.tsx"
-import useSearchParams from "../../store/hooks/useSearchParams.tsx"
+import useSearchParams from "../../store/hooks/useSearchParams.ts"
 
 const Pagination = (): ReactElement => {
   const searchParams = useSearchParams()

@@ -4,7 +4,7 @@ import CategoryItem from "./CategoryItem.tsx"
 import _ from "lodash"
 import { setCategory, setPage } from "../../../store/slice/searchParamsSlice.ts"
 import { TCategory } from "../../../types/api/pizzaTypes.ts"
-import useAppDispatch from "../../../store/hooks/useAppDispatch.tsx"
+import useAppDispatch from "../../../store/hooks/useAppDispatch.ts"
 
 interface CategoryListProps {
   categories: TCategory[]
