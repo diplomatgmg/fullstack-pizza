@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from "styled-components"
 import { colors, fontWeights } from "../../styles/theme.ts"
 
 interface ButtonProps {
-  children: string | number | ReactElement
+  children: string | number | ReactElement | ReactElement[]
   bgColor?: string
   color?: string
   hoverBgColor?: string
