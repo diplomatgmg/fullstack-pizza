@@ -5,9 +5,10 @@ import { RootState } from "../store.ts"
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.token
-    if (token) {
-      headers.set("authorization", `Bearer ${token}`)
+    const accessToken = (getState() as RootState).auth.token.access
+
+    if (accessToken) {
+      headers.set("authorization", `Bearer ${accessToken}`)
     }
     return headers
   },
