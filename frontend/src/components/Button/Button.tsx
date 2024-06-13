@@ -4,6 +4,7 @@ import { colors, fontWeights } from "../../styles/theme.ts"
 
 interface ButtonProps {
   children: string | number | ReactElement | ReactElement[]
+  onClick?: () => void
   type?: "button" | "submit"
   width?: string
   color?: string
@@ -58,6 +59,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
 
 const Button: FC<ButtonProps> = ({
   children,
+  onClick,
   type = "button",
   width = "auto",
   fontWeight = fontWeights.bold,
@@ -80,7 +82,9 @@ const Button: FC<ButtonProps> = ({
         borderColor,
         hoverBorderColor,
       }}>
-      <ButtonStyled type={type}>{children}</ButtonStyled>
+      <ButtonStyled type={type} onClick={onClick}>
+        {children}
+      </ButtonStyled>
     </ThemeProvider>
   )
 }
