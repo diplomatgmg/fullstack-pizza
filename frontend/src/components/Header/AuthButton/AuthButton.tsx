@@ -1,6 +1,12 @@
 import { type ReactElement } from "react"
 import Button from "../../Button/Button.tsx"
 import styled from "styled-components"
+import useAuth from "../../../store/hooks/useAuth.ts"
+import { Link } from "react-router-dom"
+import routes from "../../../routes/routes.tsx"
+import { colors } from "../../../styles/theme.ts"
+import { logout } from "../../../store/slice/authSlice.ts"
+import useAppDispatch from "../../../store/hooks/useAppDispatch.ts"
 
 const AuthButtonStyle = styled.div`
   display: flex;
@@ -13,10 +19,30 @@ const EmailStyle = styled.span`
 `
 
 const AuthButton = (): ReactElement => {
+  const { token } = useAuth()
+  const dispatch = useAppDispatch()
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
+
+  if (!token.access) {
+    return (
+      <Link to={routes.login.path}>
+        <Button
+          bgColor={colors.white}
+          borderColor={colors.orange}
+          color={colors.orange}>
+          Войти
+        </Button>
+      </Link>
+    )
+  }
+
   return (
     <AuthButtonStyle>
       <EmailStyle>email@email.com</EmailStyle>
-      <Button>Выйти</Button>
+      <Button onClick={handleLogout}>Выйти</Button>
     </AuthButtonStyle>
   )
 }
