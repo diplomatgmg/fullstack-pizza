@@ -1,15 +1,15 @@
-import { type ReactElement } from "react"
+import { ReactElement } from "react"
 import { Routes, Route } from "react-router-dom"
-import routes from "./routes.tsx"
+import _ from "lodash"
+import routes, { TRoutes } from "./routes"
 
 const Router = (): ReactElement => {
-  return (
-    <Routes>
-      <Route path={routes.home.path} element={routes.home.element} />
-      <Route path={routes.login.path} element={routes.login.element} />
-      <Route path={routes.register.path} element={routes.register.element} />
-    </Routes>
-  )
+  const generateRoutes = (routes: TRoutes) =>
+    _.map(routes, (route) => (
+      <Route key={route.path} path={route.path} element={route.element} />
+    ))
+
+  return <Routes>{generateRoutes(routes)}</Routes>
 }
 
 export default Router
