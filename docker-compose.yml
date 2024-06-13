@@ -6,6 +6,8 @@ services:
       - /project/frontend/node_modules
     ports:
       - "3000:3000"
+    env_file:
+      - .env
     command: sh -c "bun dev"
 
   backend:
