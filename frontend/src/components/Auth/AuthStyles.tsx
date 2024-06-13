@@ -18,10 +18,29 @@ export const AuthForm = styled.form`
   gap: 0.75rem;
 `
 
+export const AuthInputGroup = styled.div`
+  position: relative;
+`
+
 export const AuthInput = styled.input`
   border: 1px solid ${colors.lightGray};
   border-radius: 1.5rem;
   padding: 0.5rem 1.25rem;
+
+  &:focus {
+    outline: none;
+    border: 1px solid ${colors.red};
+  }
+`
+
+export const AuthError = styled.span`
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  white-space: nowrap;
+  font-size: 0.7rem;
+  font-weight: ${fontWeights.bold};
+  color: ${colors.red};
 `
 
 export const AuthLink = styled(Link)`
