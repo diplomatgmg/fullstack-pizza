@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { createApi } from "@reduxjs/toolkit/query/react"
 import {
   TNormalizedSearchParams,
   TSearchParams,
@@ -8,13 +8,11 @@ import {
   TPizzaResponse,
 } from "../../types/api/responseTypes.ts"
 import { TCategory } from "../../types/api/pizzaTypes.ts"
-import { BASE_URL } from "../../baseUrl.ts"
+import baseQuery from "./baseApi.ts"
 
 export const pizzaApi = createApi({
   reducerPath: "pizzaApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: BASE_URL,
-  }),
+  baseQuery: baseQuery,
   endpoints: (build) => ({
     getPizza: build.query<TPizzaQueryResult, TSearchParams>({
       query: (params) => {
