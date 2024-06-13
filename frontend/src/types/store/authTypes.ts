@@ -1,4 +1,6 @@
 export interface TAuthState {
-  token: string | null
-  refreshToken: string | null
+  token: {
+    access: string | null
+    refresh: string | null
+  }
 }
