@@ -1,19 +1,14 @@
-// src/App.tsx
+import GlobalStyle from "./styles/global.ts"
 import React from "react"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
+import { BrowserRouter } from "react-router-dom"
+import Router from "./components/routes/Router.tsx"
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <Router />
+      <GlobalStyle />
+    </BrowserRouter>
   )
 }
 

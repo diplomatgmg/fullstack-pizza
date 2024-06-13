@@ -2,6 +2,8 @@ import { type ReactElement } from "react"
 import styled from "styled-components"
 import PizzaLogo from "/svg/pizza.svg"
 import { fontWeights, colors } from "../../../styles/theme.ts"
+import routes from "../../routes/routes.tsx"
+import { Link } from "react-router-dom"
 
 const LogoStyle = styled.div`
   display: flex;
@@ -9,7 +11,7 @@ const LogoStyle = styled.div`
   user-select: none;
 `
 
-const LogoLink = styled.a`
+const LogoLink = styled(Link)`
   display: flex;
   text-decoration: none;
 `
@@ -40,7 +42,7 @@ const Description = styled.p`
 const Logo = (): ReactElement => {
   return (
     <LogoStyle>
-      <LogoLink href="/">
+      <LogoLink to={routes.home.path}>
         <LogoImage src={PizzaLogo} />
         <div>
           <Title>React Pizza</Title>

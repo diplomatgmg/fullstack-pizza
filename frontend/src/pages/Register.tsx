@@ -1,5 +1,4 @@
 import React from "react"
-import GlobalStyle from "../styles/global"
 import Header from "../components/Header/Header"
 import Container from "../components/Container/Container"
 import styled from "styled-components"
@@ -22,8 +21,6 @@ const RegisterPage: React.FC = () => {
       <Container withBorder={false}>
         <Register />
       </Container>
-
-      <GlobalStyle />
     </RegisterStyle>
   )
 }
