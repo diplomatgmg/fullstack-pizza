@@ -1,39 +1,19 @@
-import GlobalStyle from "./styles/global.ts"
-import Header from "./components/Header/Header.tsx"
-import Container from "./components/Container/Container.tsx"
-import styled from "styled-components"
-import { colors } from "./styles/theme.ts"
-import FilterPanel from "./components/FilterPanel/FilterPanel.tsx"
-import Pizza from "./components/Pizza/Pizza.tsx"
-import Pagination from "./components/Pagination/Pagination.tsx"
+// src/App.tsx
+import React from "react"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import Home from "./pages/Home"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
-const AppStyle = styled.div`
-  margin: 2rem;
-  background-color: ${colors.white};
-  border-radius: 2rem;
-`
-
-function App() {
+const App: React.FC = () => {
   return (
-    <AppStyle>
-      <Container>
-        <Header />
-      </Container>
-
-      <Container>
-        <FilterPanel />
-      </Container>
-
-      <Container>
-        <Pizza />
-      </Container>
-
-      <Container withBorder={false}>
-        <Pagination />
-      </Container>
-
-      <GlobalStyle />
-    </AppStyle>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
   )
 }
 
