@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "django_filters",
     # Custom apps
     "apps.pizza",
+    "apps.users",
 ]
 
 REST_FRAMEWORK = {
