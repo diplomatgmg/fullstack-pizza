@@ -24,3 +24,7 @@ class PizzaListAPIView(generics.ListAPIView):
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+    def list(self, request, *args, **kwargs):
+        time.sleep(0.5)  # Имитирует задержку БД
+        return super().list(request, *args, **kwargs)
