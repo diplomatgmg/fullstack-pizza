@@ -10,7 +10,6 @@ import PaginationItemSkeleton from "./PaginationItem/PaginationItemSkeleton.tsx"
 
 interface PaginationListProps {
   totalPages: TPizzaQueryResult["totalPages"]
-  shouldShowPagination: boolean
   isLoading: boolean
 }
 
@@ -24,7 +23,6 @@ const PaginationListStyle = styled.ul`
 
 const PaginationList: FC<PaginationListProps> = ({
   totalPages,
-  shouldShowPagination,
   isLoading,
 }): ReactElement | null => {
   const { page } = useSearchParams()
@@ -43,8 +41,6 @@ const PaginationList: FC<PaginationListProps> = ({
       </PaginationListStyle>
     )
   }
-
-  if (!shouldShowPagination) return null
 
   return (
     <PaginationListStyle>

@@ -12,7 +12,6 @@ const Pagination = (): ReactElement => {
   return (
     <PaginationList
       totalPages={totalPages}
-      shouldShowPagination={totalPages > 1}
       isLoading={isLoading || isFetching}
     />
   )
