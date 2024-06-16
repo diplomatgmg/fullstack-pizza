@@ -1,7 +1,8 @@
 import { type ReactElement } from "react"
 import { useGetPizzaQuery } from "../../store/api/pizzaApi.ts"
-import PaginationList from "./PaginationList.tsx"
+import PaginationList from "./PaginationList/PaginationList.tsx"
 import useSearchParams from "../../store/hooks/useSearchParams.ts"
+import PaginationListSkeleton from "./PaginationList/PaginationListSkeleton.tsx"
 
 const Pagination = (): ReactElement => {
   const searchParams = useSearchParams()
@@ -9,12 +10,11 @@ const Pagination = (): ReactElement => {
 
   const totalPages = data?.totalPages || 0
 
-  return (
-    <PaginationList
-      totalPages={totalPages}
-      isLoading={isLoading || isFetching}
-    />
-  )
+  if (isLoading || isFetching) {
+    return <PaginationListSkeleton />
+  }
+
+  return <PaginationList totalPages={totalPages} />
 }
 
 export default Pagination
