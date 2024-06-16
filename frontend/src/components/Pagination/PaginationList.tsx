@@ -32,10 +32,15 @@ const PaginationList: FC<PaginationListProps> = ({
     dispatch(setPage(page))
   }
 
+  const minPages = 3
+  const maxPages = 7
+  const randomPages =
+    Math.floor(Math.random() * (maxPages - minPages + 1)) + minPages
+
   if (isLoading) {
     return (
       <PaginationListStyle>
-        {_.range(5).map((index) => (
+        {_.range(randomPages).map((index) => (
           <PaginationItemSkeleton key={index} />
         ))}
       </PaginationListStyle>
