@@ -9,6 +9,7 @@ import {
   PizzaItemStyle,
   Price,
 } from "./PizzaItemStyles.tsx"
+import _ from "lodash"
 
 export const ImageSkeleton = styled.div`
   margin-top: 1.25rem;
@@ -29,6 +30,12 @@ const PriceSkeleton = styled(Price)`
 `
 
 const PizzaItemSkeleton = (): ReactElement => {
+  const randomRows = _.random(1, 10)
+  const needSecondRow = randomRows > 3
+
+  const firstRowWidth = _.random(80, 300)
+  const secondRowWidth = _.random(firstRowWidth, 300)
+
   return (
     <PizzaItemStyle>
       <ImageSkeleton>
@@ -38,8 +45,8 @@ const PizzaItemSkeleton = (): ReactElement => {
         <Skeleton width={240} />
       </NameSkeleton>
       <IngredientsSkeleton>
-        <Skeleton width={300} style={{ marginBottom: "0.5rem" }} />
-        <Skeleton width={240} />
+        <Skeleton width={firstRowWidth} style={{ marginBottom: "0.5rem" }} />
+        {needSecondRow && <Skeleton width={secondRowWidth} />}
       </IngredientsSkeleton>
       <Footer>
         <PriceSkeleton>
