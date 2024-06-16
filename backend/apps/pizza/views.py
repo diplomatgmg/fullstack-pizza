@@ -1,3 +1,5 @@
+import time
+
 from rest_framework import generics
 
 from .filters import PizzaFilter
@@ -13,6 +15,10 @@ class PizzaListAPIView(generics.ListAPIView):
     filterset_class = PizzaFilter
 
     ordering_fields = ["name", "price"]
+
+    def list(self, request, *args, **kwargs):
+        time.sleep(1)  # Имитирует задержку БД
+        return super().list(request, *args, **kwargs)
 
 
 class CategoryListAPIView(generics.ListAPIView):
