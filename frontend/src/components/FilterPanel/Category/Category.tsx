@@ -1,11 +1,16 @@
 import { type ReactElement } from "react"
 import { useGetCategoriesQuery } from "../../../store/api/pizzaApi.ts"
-import CategoryList from "./CategoryList.tsx"
+import CategoryList from "./CategoryList/CategoryList.tsx"
+import CategoryListSkeleton from "./CategoryList/CategoryListSkeleton.tsx"
 
 const Category = (): ReactElement => {
   const { data, isLoading } = useGetCategoriesQuery()
 
-  return <CategoryList categories={data || []} isLoading={isLoading} />
+  if (isLoading) {
+    return <CategoryListSkeleton />
+  }
+
+  return <CategoryList categories={data || []} />
 }
 
 export default Category
