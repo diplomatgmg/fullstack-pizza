@@ -1,8 +1,8 @@
 import { FC, type ReactElement } from "react"
-import Button from "../../Button/Button.tsx"
+import Button from "../../../Button/Button.tsx"
 import styled from "styled-components"
-import { colors, fontWeights } from "../../../styles/theme.ts"
-import useSearchParams from "../../../store/hooks/useSearchParams.ts"
+import { colors, fontWeights } from "../../../../styles/theme.ts"
+import useSearchParams from "../../../../store/hooks/useSearchParams.ts"
 
 interface CategoryItemProps {
   name: string

@@ -5,11 +5,7 @@ import CategoryList from "./CategoryList.tsx"
 const Category = (): ReactElement => {
   const { data, isLoading } = useGetCategoriesQuery()
 
-  if (isLoading) {
-    return <h1>Loading...</h1>
-  }
-
-  return <CategoryList categories={data || []} />
+  return <CategoryList categories={data || []} isLoading={isLoading} />
 }
 
 export default Category

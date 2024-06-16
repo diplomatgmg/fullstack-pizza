@@ -1,7 +1,7 @@
 import { type ReactElement } from "react"
 import Sort from "./Sort/Sort.tsx"
 import styled from "styled-components"
-import Category from "./CategoryList/Category.tsx"
+import Category from "./Category/Category.tsx"
 
 const FilterPanelStyle = styled.div`
   display: flex;
