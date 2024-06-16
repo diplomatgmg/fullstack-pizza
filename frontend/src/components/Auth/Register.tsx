@@ -11,7 +11,7 @@ const Register = (): ReactElement => {
         <AuthInput type="email" placeholder="Email" />
         <AuthInput type="password" placeholder="Пароль" />
         <AuthInput type="password" placeholder="Повтор пароля" />
-        <Button type="submit" width="100%">
+        <Button type="submit" width="230px">
           Зарегистрироваться
         </Button>
       </AuthForm>

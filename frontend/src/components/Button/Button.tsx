@@ -35,6 +35,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   justify-content: center;
   height: 40px;
   width: ${(props) => props.theme.width};
+  min-width: 60px;
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.color};
   font-weight: ${(props) => props.theme.fontWeight};

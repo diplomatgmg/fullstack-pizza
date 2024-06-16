@@ -23,9 +23,12 @@ export const AuthInputGroup = styled.div`
 `
 
 export const AuthInput = styled.input`
+  font-size: 1.25rem;
   border: 1px solid ${colors.lightGray};
-  border-radius: 1.5rem;
+  border-radius: 1.75rem;
   padding: 0.5rem 1.25rem;
+  height: 2rem;
+  width: 240px;
 
   &:focus {
     outline: none;

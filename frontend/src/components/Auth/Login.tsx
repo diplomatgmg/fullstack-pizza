@@ -56,7 +56,7 @@ const Login = (): ReactElement => {
           {errors.password && <AuthError>Обязательное поле</AuthError>}
         </AuthInputGroup>
 
-        <Button type="submit" width="100%">
+        <Button type="submit" width="140px">
           Войти
         </Button>
       </AuthForm>
