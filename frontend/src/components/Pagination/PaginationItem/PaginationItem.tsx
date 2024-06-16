@@ -1,6 +1,6 @@
 import { type FC, type ReactElement } from "react"
-import Button from "../Button/Button.tsx"
-import { colors, fontWeights } from "../../styles/theme.ts"
+import Button from "../../Button/Button.tsx"
+import { colors, fontWeights } from "../../../styles/theme.ts"
 import styled from "styled-components"
 
 interface PaginationItemProps {

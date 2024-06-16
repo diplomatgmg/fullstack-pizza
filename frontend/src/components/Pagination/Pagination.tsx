@@ -5,11 +5,7 @@ import useSearchParams from "../../store/hooks/useSearchParams.ts"
 
 const Pagination = (): ReactElement => {
   const searchParams = useSearchParams()
-  const { data, isLoading } = useGetPizzaQuery(searchParams)
-
-  if (isLoading) {
-    return <h1>Loading...</h1>
-  }
+  const { data, isLoading, isFetching } = useGetPizzaQuery(searchParams)
 
   const totalPages = data?.totalPages || 0
 
@@ -17,6 +13,7 @@ const Pagination = (): ReactElement => {
     <PaginationList
       totalPages={totalPages}
       shouldShowPagination={totalPages > 1}
+      isLoading={isLoading || isFetching}
     />
   )
 }
