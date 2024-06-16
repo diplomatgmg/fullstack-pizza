@@ -3,6 +3,7 @@ import PizzaItem from "./PizzaItem/PizzaItem.tsx"
 import styled from "styled-components"
 import { TPizza } from "../../types/api/pizzaTypes.ts"
 import _ from "lodash"
+import PizzaItemSkeleton from "./PizzaItem/PizzaItemSkeleton.tsx"
 
 interface PizzaListProps {
   pizzas: TPizza[]
@@ -24,7 +25,7 @@ const PizzaList: FC<PizzaListProps> = ({ pizzas, isLoading }): ReactElement => {
     return (
       <PizzaListStyle>
         {_.range(4).map((index) => (
-          <PizzaItem key={index} isLoading={isLoading} />
+          <PizzaItemSkeleton key={index} />
         ))}
       </PizzaListStyle>
     )
