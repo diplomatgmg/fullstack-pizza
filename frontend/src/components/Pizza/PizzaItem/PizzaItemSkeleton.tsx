@@ -2,13 +2,7 @@ import { type ReactElement } from "react"
 import styled from "styled-components"
 import Skeleton from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
-import {
-  Cart,
-  Footer,
-  Name,
-  PizzaItemStyle,
-  Price,
-} from "./PizzaItemStyles.tsx"
+import { Cart, Footer, Name, PizzaItemStyle, Price } from "./PizzaItemStyle.tsx"
 import _ from "lodash"
 
 export const ImageSkeleton = styled.div`

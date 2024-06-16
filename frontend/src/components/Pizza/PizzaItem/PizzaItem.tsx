@@ -10,7 +10,7 @@ import {
   Name,
   PizzaItemStyle,
   Price,
-} from "./PizzaItemStyles.tsx"
+} from "./PizzaItemStyle.tsx"
 
 interface PizzaItemProps {
   pizza: TPizza

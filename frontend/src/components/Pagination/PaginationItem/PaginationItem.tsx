@@ -1,17 +1,13 @@
 import { type FC, type ReactElement } from "react"
 import Button from "../../Button/Button.tsx"
 import { colors, fontWeights } from "../../../styles/theme.ts"
-import styled from "styled-components"
+import { PaginationItemStyle } from "./PaginationItemStyle.tsx"
 
 interface PaginationItemProps {
   page: number
   currentPage: number
   onClick: (newPage: number) => void
 }
-
-const PaginationItemStyle = styled.li`
-  list-style: none;
-`
 
 const PaginationItem: FC<PaginationItemProps> = ({
   page,

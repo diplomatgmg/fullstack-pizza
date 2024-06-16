@@ -1,19 +1,13 @@
 import { FC, type ReactElement } from "react"
 import Button from "../../../Button/Button.tsx"
-import styled from "styled-components"
 import { colors, fontWeights } from "../../../../styles/theme.ts"
 import useSearchParams from "../../../../store/hooks/useSearchParams.ts"
+import { CategoryItemStyle } from "./CategoryItemStyle.tsx"
 
 interface CategoryItemProps {
   name: string
   onClick: (category: string) => void
 }
-
-const CategoryItemStyle = styled.li`
-  list-style: none;
-  white-space: nowrap;
-  font-weight: ${fontWeights.regular};
-`
 
 const CategoryItem: FC<CategoryItemProps> = ({
   name,

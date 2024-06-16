@@ -4,9 +4,11 @@ import { ReactElement } from "react"
 import { PizzaListStyle } from "./PizzaListStyle.tsx"
 
 const PizzaListSkeleton = (): ReactElement => {
+  const pizzasPerPage = 4
+
   return (
     <PizzaListStyle>
-      {_.range(4).map((index) => (
+      {_.range(pizzasPerPage).map((index) => (
         <PizzaItemSkeleton key={index} />
       ))}
     </PizzaListStyle>

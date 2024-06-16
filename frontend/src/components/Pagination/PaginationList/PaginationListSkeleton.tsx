@@ -1,17 +1,14 @@
 import { type ReactElement } from "react"
-import _ from "lodash"
 import PaginationItemSkeleton from "../PaginationItem/PaginationItemSkeleton.tsx"
 import { PaginationListStyle } from "./PaginationListStyle.tsx"
+import _ from "lodash"
 
 const PaginationListSkeleton = (): ReactElement => {
-  const minPages = 3
-  const maxPages = 7
-  const randomPages =
-    Math.floor(Math.random() * (maxPages - minPages + 1)) + minPages
+  const randomPageCount = _.random(3, 7)
 
   return (
     <PaginationListStyle>
-      {_.range(randomPages).map((index) => (
+      {_.range(randomPageCount).map((index) => (
         <PaginationItemSkeleton key={index} />
       ))}
     </PaginationListStyle>

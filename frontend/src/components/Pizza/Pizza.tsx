@@ -8,9 +8,7 @@ const Pizza = (): ReactElement => {
   const searchParams = useSearchParams()
   const { data, isLoading, isFetching } = useGetPizzaQuery(searchParams)
 
-  if (isLoading || isFetching) {
-    return <PizzaListSkeleton />
-  }
+  if (isLoading || isFetching) return <PizzaListSkeleton />
 
   return <PizzaList pizzas={data?.results || []} />
 }

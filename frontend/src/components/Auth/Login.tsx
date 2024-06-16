@@ -5,7 +5,7 @@ import {
   AuthInput,
   AuthInputGroup,
   AuthLink,
-} from "./AuthStyles.tsx"
+} from "./AuthStyle.tsx"
 import Button from "../Button/Button.tsx"
 import { ReactElement } from "react"
 import routes from "../../routes/routes.tsx"

@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
-import { AuthContainer, AuthForm, AuthInput, AuthLink } from "./AuthStyles.tsx"
+import { AuthContainer, AuthForm, AuthInput, AuthLink } from "./AuthStyle.tsx"
 import Button from "../Button/Button.tsx"
 import routes from "../../routes/routes.tsx"
 

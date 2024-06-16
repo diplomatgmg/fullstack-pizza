@@ -1,6 +1,6 @@
 import Home from "../pages/Home.tsx"
-import Login from "../pages/Login.tsx"
-import Register from "../pages/Register.tsx"
+import Login from "../pages/Auth/Login.tsx"
+import Register from "../pages/Auth/Register.tsx"
 import { ReactElement } from "react"
 import NotFound from "../pages/NotFound.tsx"
 
