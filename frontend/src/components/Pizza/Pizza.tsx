@@ -5,13 +5,14 @@ import useSearchParams from "../../store/hooks/useSearchParams.ts"
 
 const Pizza = (): ReactElement => {
   const searchParams = useSearchParams()
-  const { data, isLoading } = useGetPizzaQuery(searchParams)
+  const { data, isLoading, isFetching } = useGetPizzaQuery(searchParams)
 
-  if (isLoading) {
-    return <h1>Loading...</h1>
-  }
-
-  return <PizzaList pizzas={data?.results || []} />
+  return (
+    <PizzaList
+      pizzas={data?.results || []}
+      isLoading={isLoading || isFetching}
+    />
+  )
 }
 
 export default Pizza
