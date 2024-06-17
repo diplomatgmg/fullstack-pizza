@@ -1,8 +1,8 @@
-import Home from "../pages/Home.tsx"
-import Login from "../pages/Auth/Login.tsx"
-import Register from "../pages/Auth/Register.tsx"
+import HomePage from "../pages/home.page.tsx"
+import Login from "../pages/Auth/login.page.tsx"
+import Register from "../pages/Auth/register.page.tsx"
 import { ReactElement } from "react"
-import NotFound from "../pages/NotFound.tsx"
+import NotfoundPage from "../pages/notfound.page.tsx"
 
 export enum RouteKeys {
   HOME = "home",
@@ -23,7 +23,7 @@ export type TRoutes = {
 const routes: TRoutes = {
   [RouteKeys.HOME]: {
     path: "/",
-    element: <Home />,
+    element: <HomePage />,
   },
   [RouteKeys.LOGIN]: {
     path: "/login",
@@ -35,7 +35,7 @@ const routes: TRoutes = {
   },
   [RouteKeys.NOT_FOUND]: {
     path: "*",
-    element: <NotFound />,
+    element: <NotfoundPage />,
   },
 }
 

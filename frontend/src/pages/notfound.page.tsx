@@ -15,7 +15,7 @@ const Title = styled.h1`
   font-size: 4rem;
 `
 
-const NotFound = (): ReactElement => {
+const NotfoundPage = (): ReactElement => {
   return (
     <NotFoundStyle>
       <Container>
@@ -29,4 +29,4 @@ const NotFound = (): ReactElement => {
   )
 }
 
-export default NotFound
+export default NotfoundPage

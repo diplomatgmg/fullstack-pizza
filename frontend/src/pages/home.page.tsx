@@ -13,7 +13,7 @@ const HomeStyle = styled.div`
   border-radius: 2rem;
 `
 
-const Home: React.FC = () => {
+const HomePage: React.FC = () => {
   return (
     <HomeStyle>
       <Container>
@@ -35,4 +35,4 @@ const Home: React.FC = () => {
   )
 }
 
-export default Home
+export default HomePage
