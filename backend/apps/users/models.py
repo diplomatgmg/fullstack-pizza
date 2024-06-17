@@ -1,4 +1,8 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -25,10 +29,9 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
     is_staff = models.BooleanField(_("staff status"), default=False)
-    is_superuser = models.BooleanField(_("superuser status"), default=False)
 
     objects = UserManager()
 
@@ -37,9 +40,3 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
-
-    def has_perm(self, perm, obj=None):
-        return self.is_superuser
-
-    def has_module_perms(self, app_label):
-        return self.is_superuser
