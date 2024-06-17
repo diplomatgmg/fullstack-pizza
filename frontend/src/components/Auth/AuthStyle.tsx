@@ -38,7 +38,7 @@ export const AuthInput = styled.input`
 
 export const AuthError = styled.span`
   position: absolute;
-  top: 0.75rem;
+  top: 1.25rem;
   right: 1rem;
   white-space: nowrap;
   font-size: 0.7rem;
