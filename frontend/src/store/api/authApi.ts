@@ -1,7 +1,13 @@
 import baseQuery from "./baseApi.ts"
 import { createApi } from "@reduxjs/toolkit/query/react"
-import { TLoginResponse } from "../../types/api/responseTypes.ts"
-import { TLoginRequest } from "../../types/api/requestTypes.ts"
+import {
+  TLoginResponse,
+  TRegisterResponse,
+} from "../../types/api/responseTypes.ts"
+import {
+  TLoginRequest,
+  TRegisterRequest,
+} from "../../types/api/requestTypes.ts"
 
 const authApi = createApi({
   reducerPath: "authApi",
@@ -14,7 +20,15 @@ const authApi = createApi({
         body: credentials,
       }),
     }),
+    register: builder.mutation<TRegisterResponse, TRegisterRequest>({
+      query: (credentials) => ({
+        url: "register/",
+        method: "POST",
+        body: credentials,
+      }),
+    }),
     refresh: builder.mutation<unknown, unknown>({
+      // TODO
       query: (refreshToken) => ({
         url: "token/refresh/",
         method: "POST",
@@ -24,6 +38,7 @@ const authApi = createApi({
   }),
 })
 
-export const { useLoginMutation, useRefreshMutation } = authApi
+export const { useLoginMutation, useRegisterMutation, useRefreshMutation } =
+  authApi
 
 export default authApi

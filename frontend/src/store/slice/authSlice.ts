@@ -1,8 +1,12 @@
 import { TAuthState } from "../../types/store/authTypes.ts"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { TLoginResponse } from "../../types/api/responseTypes.ts"
+import {
+  TLoginResponse,
+  TRegisterResponse,
+} from "../../types/api/responseTypes.ts"
 
 const initialState: TAuthState = {
+  email: null,
   token: {
     access: localStorage.getItem("accessToken"),
     refresh: localStorage.getItem("refreshToken"),
@@ -19,6 +23,9 @@ export const authSlice = createSlice({
       localStorage.setItem("accessToken", action.payload.access)
       localStorage.setItem("refreshToken", action.payload.refresh)
     },
+    setEmail: (state, action: PayloadAction<TRegisterResponse>) => {
+      state.email = action.payload.email
+    },
     logout: (state) => {
       state.token.access = null
       state.token.refresh = null
@@ -28,6 +35,6 @@ export const authSlice = createSlice({
   },
 })
 
-export const { setCredentials, logout } = authSlice.actions
+export const { setCredentials, setEmail, logout } = authSlice.actions
 
 export default authSlice.reducer

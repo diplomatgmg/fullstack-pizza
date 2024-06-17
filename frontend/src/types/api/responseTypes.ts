@@ -14,3 +14,7 @@ export interface TLoginResponse {
   access: string
   refresh: string
 }
+
+export interface TRegisterResponse {
+  email: string
+}
