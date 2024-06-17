@@ -39,6 +39,7 @@ const Register = (): ReactElement => {
         name="password2"
         type="password"
         placeholder="Повтор пароля"
+        valueToValidate={formMethods.watch("password")}
       />
       <Button type="submit" width="230px">
         Зарегистрироваться
