@@ -1,4 +1,4 @@
-import { ReactElement } from "react"
+import { ReactElement, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useRegisterMutation } from "../../store/api/authApi.ts"
 import { setEmail } from "../../store/slice/authSlice.ts"
@@ -8,6 +8,7 @@ import AuthInputField from "./AuthInputField"
 import Button from "../Button/Button.tsx"
 import routes from "../../routes/routes.tsx"
 import { AuthLink } from "./AuthStyle.tsx"
+import handleAsyncError from "../../utils/handleAsyncError.ts"
 
 interface Inputs {
   email: string
@@ -19,14 +20,23 @@ const Register = (): ReactElement => {
   const [registerMutation] = useRegisterMutation()
   const dispatch = useAppDispatch()
   const formMethods = useForm<Inputs>()
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const onSubmit: SubmitHandler<Inputs> = async (formData) => {
-    const response = await registerMutation(formData).unwrap()
-    dispatch(setEmail(response))
+    const response = await handleAsyncError(
+      registerMutation(formData).unwrap(),
+      setErrorMessage
+    )
+    if (response) {
+      dispatch(setEmail(response))
+    }
   }
 
   return (
-    <AuthFormWrapper onSubmit={onSubmit} formMethods={formMethods}>
+    <AuthFormWrapper
+      onSubmit={onSubmit}
+      formMethods={formMethods}
+      errorMessage={errorMessage}>
       <h2>Регистрация</h2>
       <AuthInputField name="email" type="email" placeholder="Email" required />
       <AuthInputField
