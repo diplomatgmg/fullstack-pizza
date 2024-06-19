@@ -4,9 +4,9 @@ import CategoryList from "./CategoryList/CategoryList.tsx"
 import CategoryListSkeleton from "./CategoryList/CategoryListSkeleton.tsx"
 
 const Category = (): ReactElement => {
-  const { data, isLoading } = useGetCategoriesQuery()
+  const { data, isLoading, isError } = useGetCategoriesQuery()
 
-  if (isLoading) return <CategoryListSkeleton />
+  if (isLoading || isError) return <CategoryListSkeleton />
 
   return <CategoryList categories={data || []} />
 }
