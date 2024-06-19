@@ -18,3 +18,10 @@ export interface TLoginResponse {
 export interface TRegisterResponse {
   email: string
 }
+
+export type ErrorResponse = {
+  status: number
+  data: {
+    [key: string]: unknown
+  }
+}
