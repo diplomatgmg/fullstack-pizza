@@ -1,9 +1,21 @@
 import GlobalStyle from "./styles/global.ts"
-import React from "react"
 import { BrowserRouter } from "react-router-dom"
 import Router from "./routes/Router.tsx"
+import { useHealthCheckQuery } from "./store/api/healthCheckApi.ts"
+import BackendError from "./components/Errors/BackendError.tsx"
 
-const App: React.FC = () => {
+const App = () => {
+  const { isError } = useHealthCheckQuery()
+
+  if (isError) {
+    return (
+      <>
+        <BackendError />
+        <GlobalStyle />
+      </>
+    )
+  }
+
   return (
     <BrowserRouter>
       <Router />

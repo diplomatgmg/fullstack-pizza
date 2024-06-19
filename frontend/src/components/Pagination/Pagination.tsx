@@ -6,12 +6,11 @@ import PaginationListSkeleton from "./PaginationList/PaginationListSkeleton.tsx"
 
 const Pagination = (): ReactElement => {
   const searchParams = useSearchParams()
-  const { data, isLoading, isFetching, isError } =
-    useGetPizzaQuery(searchParams)
+  const { data, isLoading, isFetching } = useGetPizzaQuery(searchParams)
 
   const totalPages = data?.totalPages || 0
 
-  if (isLoading || isFetching || isError) return <PaginationListSkeleton />
+  if (isLoading || isFetching) return <PaginationListSkeleton />
 
   return <PaginationList totalPages={totalPages} />
 }
