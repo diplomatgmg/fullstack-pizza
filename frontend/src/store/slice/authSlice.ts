@@ -20,6 +20,7 @@ export const authSlice = createSlice({
     setCredentials: (state, action: PayloadAction<TLoginResponse>) => {
       state.token.access = action.payload.access
       state.token.refresh = action.payload.refresh
+      state.email = action.payload.email
       localStorage.setItem("accessToken", action.payload.access)
       localStorage.setItem("refreshToken", action.payload.refresh)
     },

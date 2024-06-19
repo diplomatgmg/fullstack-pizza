@@ -13,6 +13,7 @@ export interface TPizzaQueryResult {
 export interface TLoginResponse {
   access: string
   refresh: string
+  email: string
 }
 
 export interface TRegisterResponse {

@@ -19,7 +19,7 @@ const EmailStyle = styled.span`
 `
 
 const AuthButton = (): ReactElement => {
-  const { token } = useAuth()
+  const { email, token } = useAuth()
   const dispatch = useAppDispatch()
 
   const handleLogout = () => {
@@ -41,7 +41,7 @@ const AuthButton = (): ReactElement => {
 
   return (
     <AuthButtonStyle>
-      <EmailStyle>email@email.com</EmailStyle>
+      <EmailStyle>{email}</EmailStyle>
       <Button onClick={handleLogout}>Выйти</Button>
     </AuthButtonStyle>
   )
