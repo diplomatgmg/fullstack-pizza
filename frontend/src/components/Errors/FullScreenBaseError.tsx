@@ -17,25 +17,24 @@ const FullScreenErrorStyle = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #000;
   z-index: 100;
-  padding-bottom: 300px;
 `
 
 const Title = styled.h1`
   font-size: 4.5rem;
   color: ${colors.white};
   user-select: none;
+  margin: 0;
 `
 
 const Description = styled.p`
   font-size: 1.5rem;
   user-select: none;
   color: ${colors.lightGray};
-  margin: 0;
 `
 
-const FullScreenError: FC<FullScreenErrorProps> = ({
+const FullScreenBaseError: FC<FullScreenErrorProps> = ({
   title,
   description,
 }): ReactElement => {
@@ -47,4 +46,4 @@ const FullScreenError: FC<FullScreenErrorProps> = ({
   )
 }
 
-export default FullScreenError
+export default FullScreenBaseError
