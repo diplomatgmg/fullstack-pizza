@@ -1,4 +1,4 @@
-import React from "react"
+import { useEffect } from "react"
 import Header from "../components/Header/Header"
 import Container from "../components/Container/Container"
 import styled from "styled-components"
@@ -6,6 +6,9 @@ import { colors } from "../styles/theme"
 import FilterPanel from "../components/FilterPanel/FilterPanel"
 import Pizza from "../components/Pizza/Pizza"
 import Pagination from "../components/Pagination/Pagination"
+import { toast, ToastContainer } from "react-toastify"
+import { useLocation } from "react-router-dom"
+import "react-toastify/dist/ReactToastify.css"
 
 const HomeStyle = styled.div`
   margin: 2rem;
@@ -14,6 +17,17 @@ const HomeStyle = styled.div`
 `
 
 const HomePage: React.FC = () => {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.state?.fromLogin) {
+      toast.success("Вы успешно авторизованы!")
+    }
+    if (location.state?.fromLogout) {
+      toast.success("Вы успешно вышли!")
+    }
+  }, [location.state])
+
   return (
     <HomeStyle>
       <Container>
@@ -31,6 +45,8 @@ const HomePage: React.FC = () => {
       <Container withBorder={false}>
         <Pagination />
       </Container>
+
+      <ToastContainer position={"bottom-right"} />
     </HomeStyle>
   )
 }

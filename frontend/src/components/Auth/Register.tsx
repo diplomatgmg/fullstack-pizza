@@ -9,7 +9,6 @@ import Button from "../Button/Button.tsx"
 import routes from "../../routes/routes.tsx"
 import { AuthLink } from "./AuthStyle.tsx"
 import handleAsyncError from "../../utils/handleAsyncError.ts"
-import "react-toastify/dist/ReactToastify.css"
 import { useNavigate } from "react-router-dom"
 
 interface Inputs {

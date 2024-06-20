@@ -2,7 +2,7 @@ import { type ReactElement } from "react"
 import Button from "../../Button/Button.tsx"
 import styled from "styled-components"
 import useAuth from "../../../store/hooks/useAuth.ts"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import routes from "../../../routes/routes.tsx"
 import { colors } from "../../../styles/theme.ts"
 import { logout } from "../../../store/slice/authSlice.ts"
@@ -21,9 +21,11 @@ const EmailStyle = styled.span`
 const AuthButton = (): ReactElement => {
   const { email, token } = useAuth()
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const handleLogout = () => {
     dispatch(logout())
+    navigate(routes.home.path, { state: { fromLogout: true } })
   }
 
   if (!token.access) {
