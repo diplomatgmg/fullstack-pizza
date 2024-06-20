@@ -6,6 +6,10 @@ User = get_user_model()
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    default_error_messages = {
+        "no_active_account": "Пользователь не найден. Проверьте корректность введенных данных."
+    }
+
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)

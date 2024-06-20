@@ -23,6 +23,7 @@ export interface TRegisterResponse {
 export type ErrorResponse = {
   status: number
   data: {
+    detail: string
     [key: string]: unknown
   }
 }

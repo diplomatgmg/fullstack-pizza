@@ -8,11 +8,16 @@ const handleAsyncError = async <T>(
     return await asyncFunc
   } catch (error) {
     const e = error as ErrorResponse
+
     if (e.status === 400) {
       if ("email" in e.data) {
         setError("Пользователь с таким email уже существует")
       } else {
         setError("Произошла ошибка. Попробуйте снова.")
+      }
+    } else if (e.status === 401) {
+      if ("detail" in e.data) {
+        setError(e.data.detail)
       }
     } else {
       setError("Произошла ошибка. Попробуйте снова.")
