@@ -9,6 +9,8 @@ import Button from "../Button/Button.tsx"
 import routes from "../../routes/routes.tsx"
 import { AuthLink } from "./AuthStyle.tsx"
 import handleAsyncError from "../../utils/handleAsyncError.ts"
+import "react-toastify/dist/ReactToastify.css"
+import { useNavigate } from "react-router-dom"
 
 interface Inputs {
   email: string
@@ -21,6 +23,7 @@ const Register = (): ReactElement => {
   const dispatch = useAppDispatch()
   const formMethods = useForm<Inputs>()
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<Inputs> = async (formData) => {
     const response = await handleAsyncError(
@@ -29,6 +32,7 @@ const Register = (): ReactElement => {
     )
     if (response) {
       dispatch(setEmail(response))
+      navigate(routes.login.path, { state: { fromRegister: true } })
     }
   }
 
