@@ -4,7 +4,11 @@ import { RootState } from "../store.ts"
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
-  prepareHeaders: (headers, { getState }) => {
+  prepareHeaders: (headers, { getState, endpoint }) => {
+    if (endpoint === "healthCheck") {
+      return new Headers()
+    }
+
     const accessToken = (getState() as RootState).auth.token.access
 
     if (accessToken) {
