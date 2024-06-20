@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # Libraries
     "rest_framework",
     "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
     "debug_toolbar",
     "django_filters",
@@ -70,6 +71,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
+    "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
 }
 
