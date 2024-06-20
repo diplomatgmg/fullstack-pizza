@@ -6,7 +6,7 @@ import {
 } from "../../types/api/responseTypes.ts"
 
 const initialState: TAuthState = {
-  email: null,
+  email: localStorage.getItem("email"),
   token: {
     access: localStorage.getItem("accessToken"),
     refresh: localStorage.getItem("refreshToken"),
@@ -23,6 +23,7 @@ export const authSlice = createSlice({
       state.email = action.payload.email
       localStorage.setItem("accessToken", action.payload.access)
       localStorage.setItem("refreshToken", action.payload.refresh)
+      localStorage.setItem("email", action.payload.email)
     },
     setEmail: (state, action: PayloadAction<TRegisterResponse>) => {
       state.email = action.payload.email
@@ -32,6 +33,7 @@ export const authSlice = createSlice({
       state.token.refresh = null
       localStorage.removeItem("accessToken")
       localStorage.removeItem("refreshToken")
+      localStorage.removeItem("email")
     },
   },
 })
