@@ -1,5 +1,31 @@
 import { ErrorResponse } from "../types/api/responseTypes.ts"
 
+const handleBadRequest = (
+  errorData: ErrorResponse["data"],
+  setError: (message: string | null) => void
+) => {
+  if ("email" in errorData) {
+    setError("Пользователь с таким email уже существует")
+  } else {
+    setError("Произошла ошибка. Попробуйте снова.")
+  }
+}
+
+const handleUnauthorized = (
+  errorData: ErrorResponse["data"],
+  setError: (message: string | null) => void
+) => {
+  if ("detail" in errorData) {
+    setError(errorData.detail)
+  } else {
+    setError("Неавторизованный доступ.")
+  }
+}
+
+const handleGenericError = (setError: (message: string | null) => void) => {
+  setError("Произошла ошибка. Попробуйте снова.")
+}
+
 const handleAsyncError = async <T>(
   asyncFunc: Promise<T>,
   setError: (message: string | null) => void
@@ -8,20 +34,20 @@ const handleAsyncError = async <T>(
     return await asyncFunc
   } catch (error) {
     const e = error as ErrorResponse
+    const { status, data } = e
 
-    if (e.status === 400) {
-      if ("email" in e.data) {
-        setError("Пользователь с таким email уже существует")
-      } else {
-        setError("Произошла ошибка. Попробуйте снова.")
-      }
-    } else if (e.status === 401) {
-      if ("detail" in e.data) {
-        setError(e.data.detail)
-      }
-    } else {
-      setError("Произошла ошибка. Попробуйте снова.")
+    switch (status) {
+      case 400:
+        handleBadRequest(data, setError)
+        break
+      case 401:
+        handleUnauthorized(data, setError)
+        break
+      default:
+        handleGenericError(setError)
+        break
     }
+
     return null
   }
 }
