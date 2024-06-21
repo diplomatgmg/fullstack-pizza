@@ -33,10 +33,10 @@ DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": lambda request: DEBUG,
 }
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.up.railway.app",
 ]
 
 # Application definition
@@ -109,6 +109,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
 
 DATABASES = {
     "default": {
