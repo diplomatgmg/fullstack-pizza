@@ -9,10 +9,12 @@ import { PaginationListStyle } from "./PaginationListStyle.tsx"
 
 interface PaginationListProps {
   totalPages: TPizzaQueryResult["totalPages"]
+  isFetching: boolean
 }
 
 const PaginationList: FC<PaginationListProps> = ({
   totalPages,
+  isFetching,
 }): ReactElement | null => {
   const { page } = useSearchParams()
   const dispatch = useAppDispatch()
@@ -29,6 +31,7 @@ const PaginationList: FC<PaginationListProps> = ({
           page={index + 1}
           currentPage={page}
           onClick={handleChangePage}
+          isFetching={isFetching}
         />
       ))}
     </PaginationListStyle>

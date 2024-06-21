@@ -10,9 +10,9 @@ const Pagination = (): ReactElement => {
 
   const totalPages = data?.totalPages || 0
 
-  if (isLoading || isFetching) return <PaginationListSkeleton />
+  if (isLoading) return <PaginationListSkeleton />
 
-  return <PaginationList totalPages={totalPages} />
+  return <PaginationList totalPages={totalPages} isFetching={isFetching} />
 }
 
 export default Pagination
