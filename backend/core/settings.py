@@ -35,6 +35,10 @@ DEBUG_TOOLBAR_CONFIG = {
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
 CSRF_TRUSTED_ORIGINS = [
     "https://*.up.railway.app",
 ]
@@ -113,7 +117,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "HOST": os.environ.get("POSTGRES_HOST"),
         "NAME": os.environ.get("POSTGRES_DB"),
         "USER": os.environ.get("POSTGRES_USER"),
