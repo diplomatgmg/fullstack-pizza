@@ -19,6 +19,8 @@ const LoginPage = () => {
 
   return (
     <AuthStyle>
+      <ToastContainer position={"bottom-right"} />
+
       <Container>
         <Header />
       </Container>
@@ -26,8 +28,6 @@ const LoginPage = () => {
       <Container withBorder={false}>
         <Login />
       </Container>
-
-      <ToastContainer position={"bottom-right"} />
     </AuthStyle>
   )
 }
