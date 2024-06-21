@@ -19,6 +19,8 @@
   - React Router DOM
   - React Hook Form
   - ReactJS Popup
+  - React Toastify
+  - React Loading Skeleton
 - TypeScript
 - Sass (Styled components)
 - Lodash
@@ -33,3 +35,38 @@
   - Django Cors Headers
   - Django Debug Toolbar
 - PostgreSQL
+- Formatter Black
+
+## Локальное развертывание
+> 1. Установите Docker:
+> ```console
+> https://www.docker.com/
+> ```
+>
+> 2. Разверните проект:
+> ```console
+> $ docker-compose up
+> ```
+
+
+## Доступные учетные записи:
+> email: `user@example.com`
+> 
+> password: `secretpassword`
+
+
+## Endpoints:
+* ### Frontend (localhost:3000)
+> `/` - Главная страница  
+> `register/` - Страница регистрации  
+> `login/` - Страница авторизации
+
+
+* ### Backend (localhost:8000)
+> `admin/` - Админ-панель  
+> `api/pizza/` - Список пицц  
+> `api/categories/` - Список категорий  
+> `api/register/` - Регистрация пользователя по Email+Password  
+> `api/token/` - Получение jwt-токена по Email+Password  
+> `api/token/refresh/` - Обновление access токена  
+> `api/health-check` - Проверка работоспособности бекенда  
