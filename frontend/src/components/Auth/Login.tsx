@@ -18,9 +18,12 @@ interface Inputs {
 
 const Login = (): ReactElement => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const [loginMutation] = useLoginMutation()
+  const [loginMutation, { isLoading }] = useLoginMutation()
   const dispatch = useAppDispatch()
-  const formMethods = useForm<Inputs>()
+  const formMethods = useForm<Inputs>({ mode: "onChange" })
+  const {
+    formState: { isValid },
+  } = formMethods
   const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<Inputs> = async (formData) => {
@@ -54,7 +57,7 @@ const Login = (): ReactElement => {
         required
         autoComplete="current-password"
       />
-      <Button type="submit" width="140px">
+      <Button type="submit" width="140px" disabled={!isValid || isLoading}>
         Войти
       </Button>
       <AuthLink to={routes.register.path}>Нет аккаунта?</AuthLink>

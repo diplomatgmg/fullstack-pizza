@@ -18,9 +18,13 @@ interface Inputs {
 }
 
 const Register = (): ReactElement => {
-  const [registerMutation] = useRegisterMutation()
+  const [registerMutation, { isLoading }] = useRegisterMutation()
   const dispatch = useAppDispatch()
-  const formMethods = useForm<Inputs>()
+  const formMethods = useForm<Inputs>({ mode: "onChange" })
+  const {
+    formState: { isValid },
+    watch,
+  } = formMethods
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const navigate = useNavigate()
 
@@ -59,10 +63,11 @@ const Register = (): ReactElement => {
         name="password2"
         type="password"
         placeholder="Повтор пароля"
-        valueToValidate={formMethods.watch("password")}
+        valueToValidate={watch("password")}
+        required
         autoComplete="new-password"
       />
-      <Button type="submit" width="230px">
+      <Button type="submit" width="230px" disabled={!isValid || isLoading}>
         Зарегистрироваться
       </Button>
       <AuthLink to={routes.login.path}>Есть аккаунт?</AuthLink>
