@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { colors, fontWeights } from "../../styles/theme.ts"
 
 export const AuthContainer = styled.div`
-  width: 250px;
+  height: 400px;
   margin: 2rem auto;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@ export const AuthInput = styled.input`
   border-radius: 1.75rem;
   padding: 0.5rem 1.25rem;
   height: 2rem;
-  width: 240px;
+  width: 280px;
 
   &:focus {
     outline: none;
