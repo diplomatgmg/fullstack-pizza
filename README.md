@@ -1,8 +1,11 @@
 <div align="center">
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/c2743f1ac52be57817ae/maintainability)](https://codeclimate.com/github/diplomatgmg/fullstack-pizza/maintainability)
+  [![Maintainability](https://api.codeclimate.com/v1/badges/c2743f1ac52be57817ae/maintainability)](https://codeclimate.com/github/diplomatgmg/fullstack-pizza/maintainability)
 
 </div>
+
+![Preview](https://github.com/diplomatgmg/fullstack-pizza/blob/main/preview.png?raw=true)
+
 
 # Pet-проект по доставке пиццы
 
