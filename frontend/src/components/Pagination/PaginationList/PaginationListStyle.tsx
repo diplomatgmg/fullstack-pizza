@@ -6,4 +6,5 @@ export const PaginationListStyle = styled.ul`
   justify-content: center;
   gap: 0.5rem;
   margin: 0;
+  padding-bottom: 1.5rem;
 `
