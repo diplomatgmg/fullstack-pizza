@@ -1,6 +1,7 @@
 import { FC, type ReactElement } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { colors, fontWeights } from "../../styles/theme.ts"
+import LoadingSpinner from "./LoadingSpinner.tsx"
 
 interface ButtonProps {
   children: string | number | ReactElement | ReactElement[]
@@ -15,6 +16,7 @@ interface ButtonProps {
   hoverBorderColor?: string
   fontWeight?: number
   disabled?: boolean
+  loading?: boolean
 }
 
 interface ButtonStyledProps {
@@ -74,6 +76,7 @@ const Button: FC<ButtonProps> = ({
   borderColor = "transparent",
   hoverBorderColor = "transparent",
   disabled = false,
+  loading = false,
 }): ReactElement => {
   return (
     <ThemeProvider
@@ -87,8 +90,11 @@ const Button: FC<ButtonProps> = ({
         borderColor,
         hoverBorderColor,
       }}>
-      <ButtonStyled type={type} onClick={onClick} disabled={disabled}>
-        {children}
+      <ButtonStyled
+        type={type}
+        onClick={onClick}
+        disabled={disabled || loading}>
+        {loading ? <LoadingSpinner /> : children}
       </ButtonStyled>
     </ThemeProvider>
   )
