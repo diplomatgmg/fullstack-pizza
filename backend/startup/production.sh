@@ -5,5 +5,5 @@ echo "Default startup executed"
 echo "Starting server..."
 python manage.py collectstatic --no-input
 python manage.py check --deploy
-gunicorn --bind 0.0.0.0 core.wsgi
+gunicorn core.wsgi
 echo "Create migrations..."
