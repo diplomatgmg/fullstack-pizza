@@ -14,6 +14,7 @@ interface ButtonProps {
   borderColor?: string
   hoverBorderColor?: string
   fontWeight?: number
+  disabled?: boolean
 }
 
 interface ButtonStyledProps {
@@ -40,10 +41,12 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   color: ${(props) => props.theme.color};
   font-weight: ${(props) => props.theme.fontWeight};
   border: ${(props) => `1px solid ${props.theme.borderColor}`};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  opacity: ${(props) => (props.disabled ? 0.7 : 1)};
+  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
   font-size: 0.9rem;
   padding: 1rem 1.5rem;
   border-radius: 20px;
-  cursor: pointer;
   transition: all 0.1s linear;
   position: relative;
   user-select: none;
@@ -70,6 +73,7 @@ const Button: FC<ButtonProps> = ({
   hoverBgColor = colors.orange,
   borderColor = "transparent",
   hoverBorderColor = "transparent",
+  disabled = false,
 }): ReactElement => {
   return (
     <ThemeProvider
@@ -83,7 +87,7 @@ const Button: FC<ButtonProps> = ({
         borderColor,
         hoverBorderColor,
       }}>
-      <ButtonStyled type={type} onClick={onClick}>
+      <ButtonStyled type={type} onClick={onClick} disabled={disabled}>
         {children}
       </ButtonStyled>
     </ThemeProvider>
