@@ -16,15 +16,7 @@ class PizzaListAPIView(generics.ListAPIView):
 
     ordering_fields = ["name", "price"]
 
-    def list(self, *args, **kwargs):
-        time.sleep(1)  # Имитирует задержку БД
-        return super().list(*args, **kwargs)
-
 
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-
-    def list(self, *args, **kwargs):
-        time.sleep(0.5)  # Имитирует задержку БД
-        return super().list(*args, **kwargs)
