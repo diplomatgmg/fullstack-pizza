@@ -1,5 +1,6 @@
 .idea/
 __pycache__/
+staticfiles/
 
 node_modules/
 venv/
@@ -7,3 +8,5 @@ bun.lockb
 
 .env
 db.sqlite3
+
+
