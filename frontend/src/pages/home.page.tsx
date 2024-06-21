@@ -7,7 +7,7 @@ import FilterPanel from "../components/FilterPanel/FilterPanel"
 import Pizza from "../components/Pizza/Pizza"
 import Pagination from "../components/Pagination/Pagination"
 import { toast, ToastContainer } from "react-toastify"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import "react-toastify/dist/ReactToastify.css"
 
 const HomeStyle = styled.div`
@@ -16,8 +16,9 @@ const HomeStyle = styled.div`
   border-radius: 2rem;
 `
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (location.state?.fromLogin) {
@@ -26,7 +27,13 @@ const HomePage: React.FC = () => {
     if (location.state?.fromLogout) {
       toast.success("Вы успешно вышли!")
     }
-  }, [location.state])
+    navigate(location.pathname, { replace: true, state: {} })
+  }, [
+    location.pathname,
+    location.state?.fromLogin,
+    location.state?.fromLogout,
+    navigate,
+  ])
 
   return (
     <HomeStyle>

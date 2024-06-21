@@ -31,7 +31,7 @@ const AuthFormWrapper = <TFieldValues extends FieldValues>({
   <AuthContainer>
     <AuthForm onSubmit={formMethods.handleSubmit(onSubmit)}>
       <FormProvider {...formMethods}>{children}</FormProvider>
-      <ErrorMessage>{errorMessage}</ErrorMessage>
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </AuthForm>
   </AuthContainer>
 )

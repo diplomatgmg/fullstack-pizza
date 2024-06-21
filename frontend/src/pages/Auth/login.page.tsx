@@ -4,16 +4,18 @@ import Login from "../../components/Auth/Login.tsx"
 import { AuthStyle } from "./AuthStyle.tsx"
 import { useEffect } from "react"
 import { toast, ToastContainer } from "react-toastify"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 const LoginPage = () => {
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (location.state?.fromRegister) {
       toast.success("Регистрация прошла успешно! Теперь вы можете войти.")
+      navigate(location.pathname, { replace: true, state: {} })
     }
-  }, [location.state])
+  }, [location.pathname, location.state?.fromRegister, navigate])
 
   return (
     <AuthStyle>
