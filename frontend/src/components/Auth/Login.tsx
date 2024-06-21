@@ -57,7 +57,11 @@ const Login = (): ReactElement => {
         required
         autoComplete="current-password"
       />
-      <Button type="submit" width="140px" disabled={!isValid || isLoading}>
+      <Button
+        type="submit"
+        width="140px"
+        disabled={!isValid || isLoading}
+        loading={isLoading}>
         Войти
       </Button>
       <AuthLink to={routes.register.path}>Нет аккаунта?</AuthLink>

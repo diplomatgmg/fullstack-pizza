@@ -25,7 +25,8 @@ const PaginationItem: FC<PaginationItemProps> = ({
         color={isActive ? colors.white : colors.black}
         hoverBgColor={colors.darkGrey}
         fontWeight={isActive ? fontWeights.bold : fontWeights.regular}
-        disabled={isFetching}>
+        disabled={isFetching}
+        loading={isActive && isFetching}>
         {page}
       </Button>
     </PaginationItemStyle>

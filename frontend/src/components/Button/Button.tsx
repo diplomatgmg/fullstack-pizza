@@ -23,12 +23,12 @@ interface ButtonStyledProps {
   theme: {
     width: ButtonProps["width"]
     fontWeight: ButtonProps["fontWeight"]
-    color: ButtonProps["color"]
-    hoverColor: ButtonProps["hoverColor"]
-    bgColor: ButtonProps["bgColor"]
-    hoverBgColor: ButtonProps["hoverBgColor"]
-    borderColor: ButtonProps["borderColor"]
-    hoverBorderColor: ButtonProps["hoverBorderColor"]
+    color: string
+    hoverColor: string
+    bgColor: string
+    hoverBgColor: string
+    borderColor: string
+    hoverBorderColor: string
   }
 }
 
@@ -94,7 +94,11 @@ const Button: FC<ButtonProps> = ({
         type={type}
         onClick={onClick}
         disabled={disabled || loading}>
-        {loading ? <LoadingSpinner /> : children}
+        {loading ? (
+          <LoadingSpinner borderColor={hoverColor} spinnerColor={bgColor} />
+        ) : (
+          children
+        )}
       </ButtonStyled>
     </ThemeProvider>
   )

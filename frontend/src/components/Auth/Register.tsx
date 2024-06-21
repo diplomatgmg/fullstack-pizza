@@ -67,7 +67,11 @@ const Register = (): ReactElement => {
         required
         autoComplete="new-password"
       />
-      <Button type="submit" width="230px" disabled={!isValid || isLoading}>
+      <Button
+        type="submit"
+        width="230px"
+        disabled={!isValid || isLoading}
+        loading={isLoading}>
         Зарегистрироваться
       </Button>
       <AuthLink to={routes.login.path}>Есть аккаунт?</AuthLink>
