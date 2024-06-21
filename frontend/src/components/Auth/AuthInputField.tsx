@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, HTMLInputAutoCompleteAttribute } from "react"
 import { useFormContext } from "react-hook-form"
 import { AuthError, AuthInput, AuthInputGroup } from "./AuthStyle.tsx"
 
@@ -9,6 +9,7 @@ interface AuthInputFieldProps {
   required?: boolean
   validate?: boolean
   valueToValidate?: string
+  autoComplete?: HTMLInputAutoCompleteAttribute
 }
 
 const AuthInputField: FC<AuthInputFieldProps> = ({
@@ -17,6 +18,7 @@ const AuthInputField: FC<AuthInputFieldProps> = ({
   placeholder,
   required = false,
   valueToValidate,
+  autoComplete,
 }) => {
   const {
     register,
@@ -36,6 +38,7 @@ const AuthInputField: FC<AuthInputFieldProps> = ({
         type={type}
         placeholder={placeholder}
         {...register(name, validationRules)}
+        autoComplete={autoComplete}
       />
       {errors[name] && <AuthError>{String(errors[name]?.message)}</AuthError>}
     </AuthInputGroup>

@@ -41,18 +41,26 @@ const Register = (): ReactElement => {
       formMethods={formMethods}
       errorMessage={errorMessage}>
       <h2>Регистрация</h2>
-      <AuthInputField name="email" type="email" placeholder="Email" required />
+      <AuthInputField
+        name="email"
+        type="email"
+        placeholder="Email"
+        required
+        autoComplete="email"
+      />
       <AuthInputField
         name="password"
         type="password"
         placeholder="Пароль"
         required
+        autoComplete="new-password"
       />
       <AuthInputField
         name="password2"
         type="password"
         placeholder="Повтор пароля"
         valueToValidate={formMethods.watch("password")}
+        autoComplete="new-password"
       />
       <Button type="submit" width="230px">
         Зарегистрироваться

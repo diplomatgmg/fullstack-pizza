@@ -40,12 +40,19 @@ const Login = (): ReactElement => {
       formMethods={formMethods}
       errorMessage={errorMessage}>
       <h2>Вход</h2>
-      <AuthInputField name="email" type="email" placeholder="Email" required />
+      <AuthInputField
+        name="email"
+        type="email"
+        placeholder="Email"
+        required
+        autoComplete="email"
+      />
       <AuthInputField
         name="password"
         type="password"
         placeholder="Пароль"
         required
+        autoComplete="current-password"
       />
       <Button type="submit" width="140px">
         Войти
