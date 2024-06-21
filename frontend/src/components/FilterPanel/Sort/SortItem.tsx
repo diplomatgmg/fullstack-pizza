@@ -3,7 +3,7 @@ import { TSortOption } from "../../../constants.ts"
 import Img from "../../Img/Img.tsx"
 import styled from "styled-components"
 import { colors } from "../../../styles/theme.ts"
-import { setOrdering } from "../../../store/slice/searchParamsSlice.ts"
+import { setOrdering, setPage } from "../../../store/slice/searchParamsSlice.ts"
 import useAppDispatch from "../../../store/hooks/useAppDispatch.ts"
 
 interface SortItemProps {
@@ -28,6 +28,7 @@ const SortItem: FC<SortItemProps> = ({ option }): ReactElement => {
 
   const handleSetOrdering = (option: TSortOption) => {
     dispatch(setOrdering(option))
+    dispatch(setPage(1))
   }
 
   return (
