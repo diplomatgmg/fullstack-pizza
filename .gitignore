@@ -6,3 +6,4 @@ venv/
 bun.lockb
 
 .env
+db.sqlite3
