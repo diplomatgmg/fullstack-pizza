@@ -4,6 +4,7 @@ import searchParamsReducer from "./slice/searchParamsSlice.ts"
 import authReducer from "./slice/authSlice.ts"
 import authApi from "./api/authApi.ts"
 import healthCheckApi from "./api/healthCheckApi.ts"
+import jwtMiddleware from "./middleware/jwtMiddleware.ts"
 
 const store = configureStore({
   reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
     getDefaultMiddleware().concat(
       pizzaApi.middleware,
       authApi.middleware,
-      healthCheckApi.middleware
+      healthCheckApi.middleware,
+      jwtMiddleware
     ),
 })
 

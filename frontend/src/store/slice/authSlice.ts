@@ -16,19 +16,22 @@ const initialState: TAuthState = {
 export const authSlice = createSlice({
   name: "auth",
   initialState,
+
   reducers: {
     setCredentials: (state, action: PayloadAction<TLoginResponse>) => {
-      state.token.access = action.payload.access
-      state.token.refresh = action.payload.refresh
-      state.email = action.payload.email
-      localStorage.setItem("accessToken", action.payload.access)
-      localStorage.setItem("refreshToken", action.payload.refresh)
-      localStorage.setItem("email", action.payload.email)
+      const { email, access, refresh } = action.payload
+      state.email = email
+      state.token.access = access
+      state.token.refresh = refresh
+      localStorage.setItem("accessToken", access)
+      localStorage.setItem("refreshToken", refresh)
+      localStorage.setItem("email", email)
     },
     setEmail: (state, action: PayloadAction<TRegisterResponse>) => {
       state.email = action.payload.email
     },
     logout: (state) => {
+      state.email = null
       state.token.access = null
       state.token.refresh = null
       localStorage.removeItem("accessToken")
