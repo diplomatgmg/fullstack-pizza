@@ -8,7 +8,6 @@ import { useLocation } from "react-router-dom"
 
 const LoginPage = () => {
   const location = useLocation()
-  console.log(location.state)
 
   useEffect(() => {
     if (location.state?.fromRegister) {
