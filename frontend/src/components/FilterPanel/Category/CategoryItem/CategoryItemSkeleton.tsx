@@ -1,10 +1,10 @@
-import { type ReactElement } from "react"
+import { type ReactElement, useMemo } from "react"
 import Skeleton from "react-loading-skeleton"
 import { CategoryItemStyle } from "./CategoryItemStyle.tsx"
 import _ from "lodash"
 
 const CategoryItemSkeleton = (): ReactElement => {
-  const randomWidth = _.random(90, 140)
+  const randomWidth = useMemo(() => _.random(90, 140), [])
 
   return (
     <CategoryItemStyle>

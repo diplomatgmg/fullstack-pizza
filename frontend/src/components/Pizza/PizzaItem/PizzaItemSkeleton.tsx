@@ -1,4 +1,4 @@
-import { type ReactElement } from "react"
+import { type ReactElement, useMemo } from "react"
 import styled from "styled-components"
 import Skeleton from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
@@ -24,11 +24,14 @@ const PriceSkeleton = styled(Price)`
 `
 
 const PizzaItemSkeleton = (): ReactElement => {
-  const randomRows = _.random(1, 10)
+  const randomRows = useMemo(() => _.random(1, 10), [])
   const needSecondRow = randomRows > 3
 
-  const firstRowWidth = _.random(80, 300)
-  const secondRowWidth = _.random(firstRowWidth, 300)
+  const firstRowWidth = useMemo(() => _.random(80, 300), [])
+  const secondRowWidth = useMemo(
+    () => _.random(firstRowWidth, 300),
+    [firstRowWidth]
+  )
 
   return (
     <PizzaItemStyle>
