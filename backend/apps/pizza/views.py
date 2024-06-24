@@ -7,7 +7,7 @@ from .serializers import PizzaSerializer, CategorySerializer
 
 
 class PizzaListAPIView(generics.ListAPIView):
-    queryset = Pizza.objects.all().prefetch_related("ingredients")
+    queryset = Pizza.objects.all().prefetch_related("ingredients").order_by("name")
     serializer_class = PizzaSerializer
     pagination_class = PizzaPagination
     filterset_class = PizzaFilter
@@ -16,5 +16,5 @@ class PizzaListAPIView(generics.ListAPIView):
 
 
 class CategoryListAPIView(generics.ListAPIView):
-    queryset = Category.objects.all().order_by("name")
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
