@@ -11,6 +11,7 @@ CORS_ALLOWED_ORIGINS = [
 
 INSTALLED_APPS += [
     "debug_toolbar",
+    "django_extensions",
 ]
 
 
