@@ -14,11 +14,11 @@ const CartInfoStyle = styled.div`
 const CartInfo = (): ReactElement => {
   return (
     <CartInfoStyle>
-      <Button>
-        <span>1240 ₽</span>
+      <Button disabled>
+        <span>0 ₽</span>
         <Delimiter />
         <Img src={CartIcon} scale={"0.75"} />
-        <span>3</span>
+        <span>0</span>
       </Button>
     </CartInfoStyle>
   )
