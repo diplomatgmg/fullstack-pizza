@@ -1,5 +1,6 @@
 services:
   frontend:
+    container_name: frontend
     build: ./frontend
     volumes:
       - ./frontend:/project/frontend
@@ -11,6 +12,7 @@ services:
     command: sh -c "bun dev"
 
   backend:
+    container_name: backend
     build:
       context: ./backend
       target: ${BUILD_TARGET}
@@ -26,6 +28,7 @@ services:
         condition: service_healthy
 
   postgres:
+    container_name: postgres
     image: postgres:16.2-alpine
     env_file:
       - .env
