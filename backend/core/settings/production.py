@@ -5,7 +5,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "fullstack-pizza.up.railway.app",
+    "https://fullstack-pizza.up.railway.app",
 ]
 
 CORS_ALLOWED_ORIGINS = [
