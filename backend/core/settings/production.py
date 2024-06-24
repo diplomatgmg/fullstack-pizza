@@ -21,6 +21,7 @@ MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_SECONDS = 3600
+SECURE_SSL_REDIRECT = True
 
 CSRF_COOKIE_DOMAIN = "https://fullstack-pizza.up.railway.app/"
 CSRF_COOKIE_SECURE = True
