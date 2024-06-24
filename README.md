@@ -4,6 +4,12 @@
 
 </div>
 
+<div align="center">
+
+  # [DEPLOY](https://fullstack-pizza.vercel.app/)
+
+</div>
+
 ![Preview](https://github.com/diplomatgmg/fullstack-pizza/blob/main/preview.png?raw=true)
 
 
