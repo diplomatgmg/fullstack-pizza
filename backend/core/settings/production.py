@@ -5,7 +5,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "https://fullstack-pizza.up.railway.app",
+    "fullstack-pizza.up.railway.app",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -22,7 +22,7 @@ MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_SECONDS = 3600
 
-CSRF_COOKIE_DOMAIN = "https://fullstack-pizza.up.railway.app/"
-CSRF_COOKIE_SECURE = True
-
 SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_DOMAIN = "fullstack-pizza.up.railway.app"
+CSRF_COOKIE_SECURE = True
