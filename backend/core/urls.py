@@ -25,7 +25,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("apps.pizza.urls")),
     path("api/", include("apps.users.urls")),
-]
+] + static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+)  # Костыль для railway
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
