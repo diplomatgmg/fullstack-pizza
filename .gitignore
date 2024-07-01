@@ -10,4 +10,6 @@ bun.lockb
 .env
 db.sqlite3
 
+stats.html
+
 
