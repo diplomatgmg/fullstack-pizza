@@ -1,14 +1,15 @@
 import { type ReactElement, useMemo } from "react"
 import PaginationItemSkeleton from "../PaginationItem/PaginationItemSkeleton.tsx"
 import { PaginationListStyle } from "./PaginationListStyle.tsx"
-import _ from "lodash"
+import random from "lodash/random"
+import range from "lodash/range"
 
 const PaginationListSkeleton = (): ReactElement => {
-  const randomPageCount = useMemo(() => _.random(3, 7), [])
+  const randomPageCount = useMemo(() => random(3, 7), [])
 
   return (
     <PaginationListStyle>
-      {_.range(randomPageCount).map((index) => (
+      {range(randomPageCount).map((index) => (
         <PaginationItemSkeleton key={index} />
       ))}
     </PaginationListStyle>

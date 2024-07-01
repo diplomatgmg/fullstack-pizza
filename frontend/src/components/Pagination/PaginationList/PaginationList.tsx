@@ -2,7 +2,7 @@ import { FC, type ReactElement } from "react"
 import PaginationItem from "../PaginationItem/PaginationItem.tsx"
 import { setPage } from "../../../store/slice/searchParamsSlice.ts"
 import { TPizzaQueryResult } from "../../../types/api/responseTypes.ts"
-import _ from "lodash"
+import range from "lodash/range"
 import useSearchParams from "../../../store/hooks/useSearchParams.ts"
 import useAppDispatch from "../../../store/hooks/useAppDispatch.ts"
 import { PaginationListStyle } from "./PaginationListStyle.tsx"
@@ -25,7 +25,7 @@ const PaginationList: FC<PaginationListProps> = ({
 
   return (
     <PaginationListStyle>
-      {_.range(totalPages).map((_, index) => (
+      {range(totalPages).map((_, index) => (
         <PaginationItem
           key={index}
           page={index + 1}

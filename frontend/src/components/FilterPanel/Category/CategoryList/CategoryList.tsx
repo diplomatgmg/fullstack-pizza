@@ -1,6 +1,6 @@
 import { FC, type ReactElement } from "react"
 import CategoryItem from "../CategoryItem/CategoryItem.tsx"
-import _ from "lodash"
+import capitalize from "lodash/capitalize"
 import {
   setCategory,
   setPage,
@@ -26,7 +26,7 @@ const CategoryList: FC<CategoryListProps> = ({ categories }): ReactElement => {
       {categories.map(({ id, name }) => (
         <CategoryItem
           key={id}
-          name={_.capitalize(name)}
+          name={capitalize(name)}
           onClick={handleChangeCategory}
         />
       ))}
