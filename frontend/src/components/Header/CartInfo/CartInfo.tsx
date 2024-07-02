@@ -4,6 +4,10 @@ import CartIcon from "/svg/cart.svg"
 import Img from "../../Img/Img.tsx"
 import Button from "../../Button/Button.tsx"
 import Delimiter from "../../Button/Delimiter.tsx"
+import { useFetchCartQuery } from "../../../store/api/cartApi.ts"
+import useAuth from "../../../store/hooks/useAuth.ts"
+import getCartSum from "../../../utils/getCartSum.ts"
+import getCartCount from "../../../utils/getCartCount.ts"
 
 const CartInfoStyle = styled.div`
   margin-left: auto;
@@ -12,13 +16,31 @@ const CartInfoStyle = styled.div`
 `
 
 const CartInfo = (): ReactElement => {
+  const { isAuthenticated } = useAuth()
+  const { data } = useFetchCartQuery(undefined, { skip: !isAuthenticated })
+
+  const cartSum = getCartSum(data ?? null)
+  const cartCount = getCartCount(data ?? null)
+
+  if (!isAuthenticated) {
+    return (
+      <CartInfoStyle>
+        <Button disabled>
+          <span>Не авторизован</span>
+          <Delimiter />
+          <Img src={CartIcon} scale={"0.75"} />
+        </Button>
+      </CartInfoStyle>
+    )
+  }
+
   return (
     <CartInfoStyle>
-      <Button disabled>
-        <span>0 ₽</span>
+      <Button>
+        <span>{cartSum} ₽</span>
         <Delimiter />
         <Img src={CartIcon} scale={"0.75"} />
-        <span>0</span>
+        <span>{cartCount}</span>
       </Button>
     </CartInfoStyle>
   )
