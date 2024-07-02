@@ -18,7 +18,7 @@ const CartPage = (): ReactElement => {
         <Header />
       </Container>
 
-      <Container>
+      <Container withBorder={false}>
         <Cart />
       </Container>
     </CartStyle>
