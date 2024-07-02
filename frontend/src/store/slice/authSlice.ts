@@ -6,6 +6,7 @@ import {
 } from "../../types/api/responseTypes.ts"
 
 const initialState: TAuthState = {
+  isAuthenticated: localStorage.getItem("accessToken") !== null,
   email: localStorage.getItem("email"),
   token: {
     access: localStorage.getItem("accessToken"),
