@@ -8,6 +8,8 @@ import { useFetchCartQuery } from "../../../store/api/cartApi.ts"
 import useAuth from "../../../store/hooks/useAuth.ts"
 import getCartSum from "../../../utils/getCartSum.ts"
 import getCartCount from "../../../utils/getCartCount.ts"
+import routes from "../../../routes/routes.tsx"
+import { Link } from "react-router-dom"
 
 const CartInfoStyle = styled.div`
   margin-left: auto;
@@ -36,12 +38,14 @@ const CartInfo = (): ReactElement => {
 
   return (
     <CartInfoStyle>
-      <Button>
-        <span>{cartSum} ₽</span>
-        <Delimiter />
-        <Img src={CartIcon} scale={"0.75"} />
-        <span>{cartCount}</span>
-      </Button>
+      <Link to={routes.cart.path}>
+        <Button>
+          <span>{cartSum} ₽</span>
+          <Delimiter />
+          <Img src={CartIcon} scale={"0.75"} />
+          <span>{cartCount}</span>
+        </Button>
+      </Link>
     </CartInfoStyle>
   )
 }

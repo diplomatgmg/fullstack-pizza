@@ -13,7 +13,7 @@ const cartApi = createApi({
   baseQuery: baseQuery,
   tagTypes: ["Cart"],
   endpoints: (builder) => ({
-    fetchCart: builder.query<TCart, unknown>({
+    fetchCart: builder.query<TCart, unknown | void>({
       query: () => "cart/",
       providesTags: ["Cart"],
     }),

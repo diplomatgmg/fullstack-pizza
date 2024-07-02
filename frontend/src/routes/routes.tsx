@@ -3,9 +3,11 @@ import Login from "../pages/Auth/login.page.tsx"
 import Register from "../pages/Auth/register.page.tsx"
 import { ReactElement } from "react"
 import NotfoundPage from "../pages/notfound.page.tsx"
+import CartPage from "../pages/cart.page.tsx"
 
 export enum RouteKeys {
   HOME = "home",
+  CART = "cart",
   LOGIN = "login",
   REGISTER = "register",
   NOT_FOUND = "not_found",
@@ -24,6 +26,10 @@ const routes: TRoutes = {
   [RouteKeys.HOME]: {
     path: "/",
     element: <HomePage />,
+  },
+  [RouteKeys.CART]: {
+    path: "/cart",
+    element: <CartPage />,
   },
   [RouteKeys.LOGIN]: {
     path: "/login",
