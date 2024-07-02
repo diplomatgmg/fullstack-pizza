@@ -3,6 +3,11 @@ import { TCartItem } from "../../types/api/cartTypes.ts"
 import styled from "styled-components"
 import Button from "../Button/Button.tsx"
 import { BASE_URL } from "../../baseUrl.ts"
+import {
+  useAddCartItemMutation,
+  useRemoveCartItemMutation,
+  useUpdateCartItemMutation,
+} from "../../store/api/cartApi.ts"
 
 interface CartItemProps {
   item: TCartItem
@@ -67,6 +72,22 @@ const CartItemPrice = styled.div`
 `
 
 const CartItem: FC<CartItemProps> = ({ item }): ReactElement => {
+  const [addCartItem] = useAddCartItemMutation()
+  const [updateCartItem] = useUpdateCartItemMutation()
+  const [removeCartItem] = useRemoveCartItemMutation()
+
+  const handleAdd = () => {
+    addCartItem({ pizza: item.pizza.id })
+  }
+
+  const handleUpdate = () => {
+    updateCartItem({ pizza: item.pizza.id, quantity: item.quantity + 1 })
+  }
+
+  const handleRemove = () => {
+    removeCartItem({ pizza: item.pizza.id })
+  }
+
   const baseImageUrl = BASE_URL.slice(0, -4) // TODO Костыль. С бекенда приходит кривая ссылка
 
   return (
@@ -74,15 +95,15 @@ const CartItem: FC<CartItemProps> = ({ item }): ReactElement => {
       <CartItemImage src={baseImageUrl + item.pizza.image} />
       <CartItemName>{item.pizza.name}</CartItemName>
       <CartItemCount>
-        <Button>-</Button>
+        <Button onClick={handleUpdate}>-</Button>
         <CartItemCountValue>{item.quantity}</CartItemCountValue>
-        <Button>+</Button>
+        <Button onClick={handleAdd}>+</Button>
       </CartItemCount>
       <CartItemPrice>
         <p>{item.pizza.price} ₽ шт.</p>
         <p>{parseFloat(item.pizza.price) * item.quantity} ₽</p>
       </CartItemPrice>
-      <Button>x</Button>
+      <Button onClick={handleRemove}>x</Button>
     </CartItemStyle>
   )
 }
