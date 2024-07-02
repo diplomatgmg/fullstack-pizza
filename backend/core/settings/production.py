@@ -6,6 +6,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "fullstack-pizza.up.railway.app",
+    "fullstack-pizza.vercel.app",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -32,4 +33,3 @@ SECURE_PROXY_SSL_HEADER = ("X-FORWARDED-PROTO", "https")
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_HSTS_PRELOAD = True
-SECURE_SSL_REDIRECT = True
