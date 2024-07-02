@@ -5,9 +5,11 @@ from .views import (
     UserCreateAPIView,
     HealthCheckAPIView,
     CustomTokenObtainPairView,
+    UserListAPIView,
 )
 
 urlpatterns = [
+    path("users/", UserListAPIView.as_view(), name="user-list"),
     path("token/", CustomTokenObtainPairView.as_view(), name="token-obtain-pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token-refresh"),
     path("register/", UserCreateAPIView.as_view(), name="user-register"),
