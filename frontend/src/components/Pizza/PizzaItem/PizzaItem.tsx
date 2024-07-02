@@ -11,12 +11,17 @@ import {
   PizzaItemStyle,
   Price,
 } from "./PizzaItemStyle.tsx"
+import { useAddCartItemMutation } from "../../../store/api/cartApi.ts"
 
 interface PizzaItemProps {
   pizza: TPizza
 }
 
 const PizzaItem: FC<PizzaItemProps> = ({ pizza }): ReactElement => {
+  const { token } = useAuth()
+
+  const isAuthenticated = token.access !== null
+
   return (
     <PizzaItemStyle>
       <Image src={pizza.image} alt={pizza.name} />
@@ -28,9 +33,10 @@ const PizzaItem: FC<PizzaItemProps> = ({ pizza }): ReactElement => {
         <Price>от {pizza.price} ₽</Price>
         <Cart>
           <Button
-            bgColor={colors.white}
-            borderColor={colors.orange}
-            color={colors.orange}>
+            disabled={!isAuthenticated}
+            borderColor={isAuthenticated ? colors.orange : colors.white}
+            bgColor={isAuthenticated ? colors.white : colors.orange}
+            color={isAuthenticated ? colors.orange : colors.white}>
             В корзину
           </Button>
         </Cart>
