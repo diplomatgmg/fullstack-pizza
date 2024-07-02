@@ -9,3 +9,7 @@ echo "Database migrated"
 echo "Loading fixtures..."
 python manage.py loaddata __fixtures__/*.json
 echo "Fixtures loaded"
+
+echo "Create superuser..."
+python manage.py createsuperuser --noinput
+echo "Superuser created"
