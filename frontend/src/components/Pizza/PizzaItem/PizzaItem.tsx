@@ -12,15 +12,19 @@ import {
   Price,
 } from "./PizzaItemStyle.tsx"
 import { useAddCartItemMutation } from "../../../store/api/cartApi.ts"
+import useAuth from "../../../store/hooks/useAuth.ts"
 
 interface PizzaItemProps {
   pizza: TPizza
 }
 
 const PizzaItem: FC<PizzaItemProps> = ({ pizza }): ReactElement => {
-  const { token } = useAuth()
+  const { isAuthenticated } = useAuth()
+  const [addCartItem] = useAddCartItemMutation()
 
-  const isAuthenticated = token.access !== null
+  const handleAddToCart = () => {
+    addCartItem({ pizza: pizza.id })
+  }
 
   return (
     <PizzaItemStyle>
@@ -33,6 +37,7 @@ const PizzaItem: FC<PizzaItemProps> = ({ pizza }): ReactElement => {
         <Price>от {pizza.price} ₽</Price>
         <Cart>
           <Button
+            onClick={handleAddToCart}
             disabled={!isAuthenticated}
             borderColor={isAuthenticated ? colors.orange : colors.white}
             bgColor={isAuthenticated ? colors.white : colors.orange}

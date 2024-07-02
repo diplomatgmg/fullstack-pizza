@@ -21,6 +21,7 @@ export const authSlice = createSlice({
   reducers: {
     setCredentials: (state, action: PayloadAction<TLoginResponse>) => {
       const { email, access, refresh } = action.payload
+      state.isAuthenticated = true
       state.email = email
       state.token.access = access
       state.token.refresh = refresh
@@ -32,6 +33,7 @@ export const authSlice = createSlice({
       state.email = action.payload.email
     },
     logout: (state) => {
+      state.isAuthenticated = false
       state.email = null
       state.token.access = null
       state.token.refresh = null
