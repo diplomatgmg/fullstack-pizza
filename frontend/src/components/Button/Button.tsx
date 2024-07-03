@@ -1,10 +1,11 @@
-import { FC, type ReactElement } from "react"
+import { CSSProperties, FC, type ReactElement } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { colors, fontWeights } from "../../styles/theme.ts"
 import LoadingSpinner from "./LoadingSpinner.tsx"
 
 interface ButtonProps {
   children: string | number | ReactElement | ReactElement[]
+  style?: CSSProperties
   onClick?: () => void
   type?: "button" | "submit"
   width?: string
@@ -19,7 +20,7 @@ interface ButtonProps {
   loading?: boolean
 }
 
-interface ButtonStyledProps {
+export interface ButtonStyledProps {
   theme: {
     width: ButtonProps["width"]
     fontWeight: ButtonProps["fontWeight"]
@@ -38,7 +39,6 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   justify-content: center;
   height: 40px;
   width: ${(props) => props.theme.width};
-  min-width: 60px;
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.color};
   font-weight: ${(props) => props.theme.fontWeight};
@@ -65,6 +65,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
 
 const Button: FC<ButtonProps> = ({
   children,
+  style,
   onClick,
   type = "button",
   width = "auto",
@@ -93,7 +94,8 @@ const Button: FC<ButtonProps> = ({
       <ButtonStyled
         type={type}
         onClick={onClick}
-        disabled={disabled || loading}>
+        disabled={disabled || loading}
+        style={style}>
         {loading ? (
           <LoadingSpinner borderColor={hoverColor} spinnerColor={bgColor} />
         ) : (

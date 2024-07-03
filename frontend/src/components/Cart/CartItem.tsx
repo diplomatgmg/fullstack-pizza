@@ -1,6 +1,5 @@
 import { FC, type ReactElement } from "react"
 import { TCartItem } from "../../types/api/cartTypes.ts"
-import styled from "styled-components"
 import Button from "../Button/Button.tsx"
 import { BASE_URL } from "../../baseUrl.ts"
 import {
@@ -8,68 +7,19 @@ import {
   useRemoveCartItemMutation,
   useUpdateCartItemMutation,
 } from "../../store/api/cartApi.ts"
+import {
+  CartItemCount,
+  CartItemCountValue,
+  CartItemImage,
+  CartItemName,
+  CartItemPrice,
+  CartItemStyle,
+} from "./CartStyles.tsx"
+import buttonStyle from "./buttonStyle.ts"
 
 interface CartItemProps {
   item: TCartItem
 }
-
-const CartItemStyle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: 24px;
-`
-
-const CartItemImage = styled.img`
-  width: 120px;
-  height: 120px;
-  margin-right: 24px;
-`
-
-const CartItemName = styled.h3`
-  display: flex;
-  align-items: center;
-  width: 50%;
-  font-size: 1.5rem;
-`
-
-const CartItemCount = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const CartItemCountValue = styled.div`
-  font-size: 22px;
-  font-weight: bold;
-
-  margin: 0 12px;
-`
-
-const CartItemPrice = styled.div`
-  font-size: 22px;
-  font-weight: bold;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-
-  width: 20%;
-
-  white-space: nowrap;
-
-  p {
-    margin: 0;
-  }
-
-  p:first-of-type {
-    font-size: 12px;
-    margin-bottom: 0.5rem;
-
-    color: #7b7b7b;
-  }
-`
 
 const CartItem: FC<CartItemProps> = ({ item }): ReactElement => {
   const [addCartItem] = useAddCartItemMutation()
@@ -95,15 +45,21 @@ const CartItem: FC<CartItemProps> = ({ item }): ReactElement => {
       <CartItemImage src={baseImageUrl + item.pizza.image} />
       <CartItemName>{item.pizza.name}</CartItemName>
       <CartItemCount>
-        <Button onClick={handleUpdate}>-</Button>
+        <Button onClick={handleUpdate} {...buttonStyle}>
+          -
+        </Button>
         <CartItemCountValue>{item.quantity}</CartItemCountValue>
-        <Button onClick={handleAdd}>+</Button>
+        <Button onClick={handleAdd} {...buttonStyle}>
+          +
+        </Button>
       </CartItemCount>
       <CartItemPrice>
         <p>{item.pizza.price} ₽ шт.</p>
         <p>{parseFloat(item.pizza.price) * item.quantity} ₽</p>
       </CartItemPrice>
-      <Button onClick={handleRemove}>x</Button>
+      <Button onClick={handleRemove} {...buttonStyle}>
+        x
+      </Button>
     </CartItemStyle>
   )
 }

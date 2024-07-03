@@ -15,7 +15,7 @@ export interface TAddCartItemPayload {
 }
 
 export interface TRemoveCartItemPayload {
-  pizza: number
+  pizza: number | "all"
 }
 
 export interface TUpdateCartItemPayload {
