@@ -22,6 +22,11 @@ const CartHeaderStyle = styled.div`
   padding-bottom: 2rem;
 `
 
+const CartHeaderTitleStyle = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 const CartTitleStyle = styled.h2`
   font-size: 32px;
   margin: 0;
@@ -58,8 +63,6 @@ const Cart = (): ReactElement => {
   const { data } = useFetchCartQuery(undefined, { skip: !isAuthenticated })
   const [removeCartItem] = useRemoveCartItemMutation()
 
-  const isCartEmpty = data?.items.length === 0
-
   const handleClearCart = () => {
     removeCartItem({ pizza: "all" })
   }
@@ -67,19 +70,17 @@ const Cart = (): ReactElement => {
   return (
     <CartStyle>
       <CartHeaderStyle>
-        <CartTitleStyle>
+        <CartHeaderTitleStyle>
           <CartIconStyle>
             <Img src={CartIcon} scale={"1.75"} />
           </CartIconStyle>
           <CartTitleStyle>Корзина</CartTitleStyle>
-        </CartTitleStyle>
+        </CartHeaderTitleStyle>
 
-        {!isCartEmpty && (
-          <CartClearStyle>
-            <Button onClick={handleClearCart}>x</Button>
-            <CartTextStyle>Очистить корзину</CartTextStyle>
-          </CartClearStyle>
-        )}
+        <CartClearStyle>
+          <Button onClick={handleClearCart}>x</Button>
+          <CartTextStyle>Очистить корзину</CartTextStyle>
+        </CartClearStyle>
       </CartHeaderStyle>
 
       <CartList items={data?.items ?? []} />
