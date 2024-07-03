@@ -27,18 +27,9 @@ const authApi = createApi({
         body: credentials,
       }),
     }),
-    refresh: builder.mutation<unknown, unknown>({
-      // TODO
-      query: (refreshToken) => ({
-        url: "token/refresh/",
-        method: "POST",
-        body: { refresh: refreshToken },
-      }),
-    }),
   }),
 })
 
-export const { useLoginMutation, useRegisterMutation, useRefreshMutation } =
-  authApi
+export const { useLoginMutation, useRegisterMutation } = authApi
 
 export default authApi

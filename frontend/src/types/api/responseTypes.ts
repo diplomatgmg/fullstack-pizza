@@ -20,6 +20,11 @@ export interface TRegisterResponse {
   email: string
 }
 
+export interface TTokenResponse {
+  access: string
+  refresh: string
+}
+
 export type ErrorResponse = {
   status: number
   data: {
